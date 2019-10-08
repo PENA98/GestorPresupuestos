@@ -1,0 +1,19 @@
+{
+  "name": "gestorpresupuestos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PENA98/GestorPresupuestos.git"
+  },
+  "author": "Maynor Peña",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PENA98/GestorPresupuestos/issues"
+  },
+  "homepage": "https://github.com/PENA98/GestorPresupuestos#readme"
+}
