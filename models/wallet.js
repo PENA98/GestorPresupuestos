@@ -7,7 +7,16 @@ const walletSchema = new  mongoose.Schema({
         type: String,
         required: true
     },
-    expense : [{
+    acounts: [{
+        name: {
+            type: String,
+        },
+        amount: {
+            type: Number
+        }
+
+    }],
+    expense: [{
         category:{
             type: String,
             required: true
@@ -18,6 +27,13 @@ const walletSchema = new  mongoose.Schema({
         },
         comment:{
             type: String
+        },
+        date: {
+            type: Date,
+            required: true
+        },
+        account: {
+            name: String
         }
     }]
 
