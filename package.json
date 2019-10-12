@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./index",
-    "watch": "webpack --w --mode development",
-    "start": "concurrently \"npm run dev\" \"npm run watch\""
+    "start": "nodemon ./index"
   },
   "repository": {
     "type": "git",
@@ -19,6 +17,8 @@
   },
   "homepage": "https://github.com/PENA98/GestorPresupuestos#readme",
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "chart.js": "^2.8.0",
     "concurrently": "^4.1.2",
     "connect-mongo": "^3.0.0",
     "cookie-parser": "^1.4.4",

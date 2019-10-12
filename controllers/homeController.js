@@ -1,4 +1,8 @@
 
 exports.showHome = function(req, res){
-    res.send("It works!!!");
+    res.render("home");
+};
+
+exports.showLogin = function(req, res){
+    res.render("modalLoginRegister");
 };
