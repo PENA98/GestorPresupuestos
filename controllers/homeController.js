@@ -1,6 +1,6 @@
 
 exports.showHome = function(req, res){
-    res.render("home");
+    res.render("landing");
 };
 
 exports.showLogin = function(req, res){
