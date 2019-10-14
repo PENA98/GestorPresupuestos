@@ -16,6 +16,17 @@ const walletSchema = new  mongoose.Schema({
         }
 
     }],
+    savings: [{
+        name: {
+            type: String,
+        },
+        goal: {
+            type: Number
+        },
+        amount: {
+            type: Number
+        }
+    }],
     expense: [{
         category:{
             type: String,
@@ -38,3 +49,5 @@ const walletSchema = new  mongoose.Schema({
     }]
 
 })
+
+module.exports = mongoose.model("wallet", walletSchema)

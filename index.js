@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.set('useCreateIndex', true);
 require("./config/db");
 const express = require("express");
 const expressHandleBars = require("express-handlebars");
@@ -7,7 +8,9 @@ const router = require("./routes/index");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const flash = require("connect-flash");
+const passport = require("passport");
 
 
 // archivo para las variables de entorno
@@ -29,6 +32,12 @@ app.engine(
 );
 
 app.set("view engine", "handlebars");
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.messages = flash.messages;
+    next();
+});
 
 app.use(express.static(path.join(__dirname,"public")));
 
@@ -43,6 +52,18 @@ app.use(
         store: new MongoStore({ mongooseConnection: mongoose.connection })
     })
 );
+
+//passport config
+require("./config/passport")(passport)
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next){
+    res.locals.user = req.user || null;
+    console.log(req.user)
+    next();
+})
 
 app.use("/", router());
 

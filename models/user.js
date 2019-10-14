@@ -3,14 +3,14 @@ mongoose.Promise = global.Promise;
 const bcrypt = require("bcrypt");
 
 // Definición del schema
-const usuarioSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
     lowercase: true,
     trim: true
   },
-  nombre: {
+  name: {
     type: String,
     required: true,
     trim: true
@@ -21,10 +21,10 @@ const usuarioSchema = new mongoose.Schema({
     trim: true
   },
   token: String,
-  expira: Date
+  expires: Date
 });
 // Hooks (método) para hash + salt password
-usuarioSchema.pre("save", function(next) {
+userSchema.pre("save", function(next) {
   const user = this;
 
   // Si el password ya fué modificado (ya hasheado)
@@ -50,15 +50,15 @@ usuarioSchema.pre("save", function(next) {
 });
 
 // Hooks para poder pasar los errores de MongoBD hacia express validator
-usuarioSchema.post("save", function(error, doc, next) {
+userSchema.post("save", function(error, doc, next) {
   // Verificar que es un error de MongoDB
   if (error.name === "MongoError" && error.code === 11000) {
     next(
-      "Ya exite un usuario con la dirección de correo electrónico ingresada"
+      "Ya existe un usuario con la dirección de correo electrónico ingresada"
     );
   } else {
     next(error);
   }
 });
 
-module.exports = mongoose.model("Usuario", usuarioSchema);
+module.exports = mongoose.model("user", userSchema);

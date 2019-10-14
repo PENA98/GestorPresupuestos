@@ -30,5 +30,14 @@ module.exports = {
 
         return (options.fn().html = html);
     
+    },
+    namePrinter: (e, options) => {
+        let name = e.split(" ", 2 )
+        let html = "";
+        html += `   <span class="user-name">${name[0]}
+                            
+                        <strong>${name[1]}</strong>
+                    </span>`
+        return (options.fn().html = html);
     }
 }

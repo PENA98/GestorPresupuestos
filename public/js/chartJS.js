@@ -1,7 +1,7 @@
 
 let thisChart = document.getElementById("lineChart");
 let lineChart = new Chart(thisChart, {
-    type: 'doughnut',
+    type: 'polarArea',
     data: {
         labels: ['comida', 'transporte', 'educacion', 'facturas', 'carro', 'deportes'],
         datasets: [{

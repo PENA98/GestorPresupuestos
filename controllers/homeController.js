@@ -1,8 +1,27 @@
+const mongoose = require("mongoose");
+const wallet = mongoose.model("wallet");
 
 exports.showHome = function(req, res){
-    res.render("landing");
+
+    let wall = wallet.count()
+    console.log(res.locals.user.email);
+    console.log(wall);
+    if (!wall) {
+        res.render("getStarted" ,{
+            layout: 'home.handlebars'
+        });
+    } else {
+        res.render("form" ,{
+            layout: 'home.handlebars'
+        });
+    }
+
+
+   
 };
 
-exports.showLogin = function(req, res){
-    res.render("modalLoginRegister");
+
+
+exports.showLanding = function(req, res){
+    res.render("landing");
 };

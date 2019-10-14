@@ -11,3 +11,6 @@ mongoose.connection.on("error", error => {
     console.log(error);
 });
 
+require("../models/wallet");
+require("../models/user");
+require("../models/category");
