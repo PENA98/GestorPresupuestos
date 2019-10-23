@@ -3,13 +3,24 @@ mongoose.Promise = global.Promise;
 
 
 const walletSchema = new  mongoose.Schema({  
-    user:{
+    userID: {
         type: String,
         required: true
     },
+    salary: {
+        type: Number
+    },
+    income: [{
+        name: {
+            type: String
+        },
+        amount: {
+            type: Number
+        }
+    }],
     acounts: [{
         name: {
-            type: String,
+            type: String
         },
         amount: {
             type: Number
@@ -18,7 +29,7 @@ const walletSchema = new  mongoose.Schema({
     }],
     savings: [{
         name: {
-            type: String,
+            type: String
         },
         goal: {
             type: Number
@@ -28,15 +39,15 @@ const walletSchema = new  mongoose.Schema({
         }
     }],
     expense: [{
-        category:{
+        category: {
             type: String,
             required: true
         }, 
-        amount:{
-            type: Boolean,
+        amount: {
+            type: Number,
             required: true
         },
-        comment:{
+        comment: {
             type: String
         },
         date: {

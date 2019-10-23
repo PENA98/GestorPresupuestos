@@ -3,6 +3,7 @@ const router = express.Router();
 const { check } = require("express-validator");
 const homeController = require("../controllers/homeController");
 const userController = require("../controllers/userController");
+const walletController = require("../controllers/walletController")
 
 module.exports = () => {
 
@@ -12,6 +13,10 @@ module.exports = () => {
 
 
     // user routes
+
+    //logout
+    router.get("/logout", userController.logOut);
+
     //login
     router.get("/login", userController.showLogin);
     router.post("/login", userController.authenticateUser);
@@ -39,6 +44,13 @@ module.exports = () => {
             .custom((value, { req }) => value === req.body.password)
     ], userController.saveUser);
 
+    // rutas para los gastos
+    router.get("/add_expense", walletController.addExpense)
 
+    //ruta start
+    router.get("/start", walletController.start)
+
+    //perfil
+    router.get("/profile", userController.profile)
     return router;
 };
