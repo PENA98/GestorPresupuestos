@@ -1,8 +1,4 @@
-<style>
-    .datepicker {
-      z-index: 1600 !important; /* has to be larger than 1050 */
-    }
-</style>
+
 
 <!-- Small boxes (Stat box) -->
       <div class="row">
@@ -71,8 +67,8 @@
       <!-- MODAL -->
 
       <!-- line modal -->
-      <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+      <div class="modal fade bd-example-modal-lg" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
@@ -85,33 +81,46 @@
                   
                   <div class="row">
                     <div class="col-lg-6">
-                            <div class="input-group">
-                      <span class="input-group-addon">$</span>
-                      <input type="text" class="form-control">
-                      <span class="input-group-addon">.00</span>
-                    </div>
+                      <div class="form-group">
+                        <label for="currency">Introduzca el valor</label>
+                        <input type="text" class="form-control text-left" id="currency" name="currency" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                      </div>
                       <!-- /input-group -->
                     </div>
                     <!-- /.col-lg-6 -->
                     <div class="col-lg-6">
-              
-                    <div class="input-group date">
-                      <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
+                      
+                      <div class="form-group">
+                        <label for="date">Fecha</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
+                        </div>
+                        <!-- /.input group -->
                       </div>
-                      <input type="text" class="form-control pull-right" id="datepicker">
-                          <!-- /input-group -->
-                    </div>
+
                     <!-- /.col-lg-6 -->
                   </div>
                 
                 <!-- /.input group -->
               </div>
-                      
-              <div class="form-group">
-                <label>Text</label>
-                <input type="text" class="form-control" placeholder="Enter ...">
+
+                <div class="form-group">
+                  <label>Text</label>
+                  <input type="text" class="form-control" placeholder="Enter ...">
+                </div>
+              
+              
+              <div class="row">
+                
+                <div class="col-md-6">
+                  
+                </div>
               </div>
+
+
       
             </form>
 
