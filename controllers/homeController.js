@@ -3,7 +3,7 @@ const wallet = mongoose.model("wallet");
 
 exports.showHome = async(req, res) => {
     const a = wallet.countDocuments({userID: req.user._id}, function(err, count){
-        if(count>0){
+        if(count > 0){
             res.redirect("/app_home")
 
         }else{
@@ -14,6 +14,8 @@ exports.showHome = async(req, res) => {
 
         }
     })
+
+    
     
 };
 
@@ -25,11 +27,28 @@ exports.showAppHome = async(req, res) => {
     console.log(wall.income[0].amount);
     console.log(Array.isArray(wall.income));
     
+    let creditCard = false
+    let savingsS = false
 
+    if(wall.creditCard.length > 0 ) {
+        creditCard = true
+    }
+
+    if(wall.savings.length > 0 ) {
+        savingsS = true
+    }
+
+    
+    
+    console.log(creditCard);
+    
     res.render("start" ,{
         layout: 'home.handlebars',
         tittle: "Wall-E",
-        datos: wall.income
+        incomes: wall.income,
+        expenses: wall.expense,
+        Card: creditCard,
+        save: savingsS
 
     });
     

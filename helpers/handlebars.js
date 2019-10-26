@@ -31,14 +31,136 @@ module.exports = {
         return (options.fn().html = html);
     
     },
-    test: (e, options) => {
-       console.log(e[0].amount)
-       let html = `<h3> L ${e[0].amount} </h3>`;
+    incomeTotal: (e, options) => {
+       let totalAmount = 0;
+       e.forEach(income => {
+           totalAmount += income.amount
+       });
+       let html = `<h3> L ${totalAmount} </h3>`;
        return (options.fn().html = html);
     },
+    expenseTotal: (e, options) => {
+        let totalAmount = 0;
+        e.forEach(expense => {
+            totalAmount += expense.amount
+        });
+        let html = `<h3> L ${totalAmount} </h3>`;
+        return (options.fn().html = html);
+    },
+    balance: (i, e,  options) => {
+        let totalIncome = 0;
+        let totalExpense = 0;
+        i.forEach(income => {
+            totalIncome += income.amount
+        });
+
+        e.forEach(expense => {
+            totalExpense += expense.amount
+        });
+
+        let html = `<h3> L ${totalIncome - totalExpense} </h3>`;
+        return (options.fn().html = html);
+    },
+    tableMaker: (e,  options) => {
+        let html = "";
+        let counter = 0;
+        e.income.reverse().forEach(inc =>{
+            console.log(inc.date);
+            counter += 1;
+            html += `
+                    <tr>
+                    <td>${counter}</td>
+                    <td>${inc.date}</td>
+                    <td>${inc.comment}</td>
+                    <td>${inc.category}</td>
+                    <td>${inc.account}</td>
+                    <td class="text-green">L ${inc.amount}</td>
+                    <td>
+                        <a href="#"><i class="fa fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                    </tr>
+                    `
+        });
+        e.expense.reverse().forEach(exp =>{
+            
+            counter += 1;
+            html += `
+                    <tr>
+                    <td>${counter}</td>
+                    <td>${exp.date}</td>
+                    <td>${exp.comment}</td>
+                    <td>${exp.category}</td>
+                    <td>${exp.account}</td>
+                    <td class="text-red">L ${exp.amount}</td>
+                    <td>
+                        <a href="#"><i class="fa fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                    </tr>
+                    `
+        });
+
+        return (options.fn().html = html);
+    },
+    expenseTableMaker: (e,  options) => {
+        let html = "";
+        let counter = 0;
+        e.expense.reverse().forEach(exp =>{
+            
+            counter += 1;
+            html += `
+                    <tr>
+                    <td>${counter}</td>
+                    <td>${exp.date}</td>
+                    <td>${exp.comment}</td>
+                    <td>${exp.category}</td>
+                    <td>${exp.account}</td>
+                    <td class="text-red">L ${exp.amount}</td>
+                    <td>
+                        <a href="#"><i class="fa fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                    </tr>
+                    `
+        });
+
+        return (options.fn().html = html);
+    },
+    incomeTableMaker: (e,  options) => {
+        let html = "";
+        let counter = 0;
+        e.income.reverse().forEach(inc =>{
+            console.log(inc.date);
+            counter += 1;
+            html += `
+                    <tr>
+                    <td>${counter}</td>
+                    <td>${inc.date}</td>
+                    <td>${inc.comment}</td>
+                    <td>${inc.category}</td>
+                    <td>${inc.account}</td>
+                    <td class="text-green"> L ${inc.amount}</td>
+                    <td>
+                        <a href="#"><i class="fa fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                    </tr>
+                    `
+        });
+
+        return (options.fn().html = html);
+    },
     incomeChart: (e, options) => {
-        const thisChart = `<canvas id="income" style="height: 303px; width: 609px; display: block;" height="303" width="609" class="chartjs-render-monitor"></canvas>`
-    
+        const thisChart = document.getElementById("income");
         let lineChart = new Chart(thisChart, {
             type: 'doughnut',
             data: {

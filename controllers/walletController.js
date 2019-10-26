@@ -4,13 +4,25 @@ const wallet = mongoose.model("wallet");
 
 exports.addExpense = async(req, res) => {
 
-    wallet.countDocuments({userID: req.user._id}, function(err, count){
-        if(count>0){
-            console.log("existe")
-        }else{
-            console.log("Nel")
-        }
-    })
+    wallet.updateOne({
+        userID: req.user._id
+    },
+    {
+        $push:{expense:{
+            "category": req.body.category,
+            "amount": Number(req.body.amount),
+            "date": req.body.date,
+            "account": req.body.account,
+            "comment": req.body.comment
+        }}
+    },function(err, cb) {
+        console.log(err);
+        
+    }
+    )
+
+
+    res.redirect("/app_home");
     
 }
 
@@ -24,7 +36,7 @@ exports.start = async(req, res) => {
     await wall.save();
     //guardar en la base de datos
     
-    res.redirect("/home");
+    res.redirect("/app_home");
 }
 
 exports.addIncome = async(req, res) => {
@@ -46,6 +58,6 @@ exports.addIncome = async(req, res) => {
     )
 
 
-    res.redirect("/home");
+    res.redirect("/app_home");
   
 }

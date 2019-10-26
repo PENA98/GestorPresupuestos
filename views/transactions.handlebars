@@ -1,0 +1,189 @@
+<div class="row ">
+  <div class="col-md-10">
+
+
+    <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><h4>transacciones</h4></a></li>
+              <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false"><h4>Gastos</h4></a></li>
+              <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="true"><h4>Ingresos</h4></a></li>
+            </ul>
+            <div class="tab-content ">
+              <div class="tab-pane active" id="tab_1">
+                <div class="box box-success">
+            <div class="box-header">
+              <h3 class="box-title">Resumen de gastos e ingresos</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body no-padding">
+              <table class="table table-striped">
+                <tbody><tr>
+                  <th style="width: 10px">#</th>
+                  <th style="width: 100px">Fecha</th>
+                  <th>Descripcion</th>
+                  <th >Categoria</th>
+                  <th>Cuenta</th>
+                  <th>Valor</th>
+                  <th style="width: 20px">Editar</th>
+                  <th style="width: 20px">borrar</th>
+
+                </tr>
+
+                {{#tableMaker data}}
+                {{/tableMaker}}
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                  <div class="box box-success">
+                    <div class="box-header">
+                      <h3 class="box-title">Resumen de gastos</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                      <table class="table table-striped">
+                        <tbody><tr>
+                          <th style="width: 10px">#</th>
+                          <th style="width: 100px">Fecha</th>
+                          <th>Descripcion</th>
+                          <th >Categoria</th>
+                          <th>Cuenta</th>
+                          <th>Valor</th>
+                          <th style="width: 20px">Editar</th>
+                          <th style="width: 20px">borrar</th>
+
+                        </tr>
+
+                        {{#expenseTableMaker data}}
+                        {{/expenseTableMaker}}
+                      </tbody></table>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_3">
+                  <div class="box box-success">
+                    <div class="box-header">
+                      <h3 class="box-title">Resumen de ingresos</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                      <table class="table table-striped">
+                        <tbody><tr>
+                          <th style="width: 10px">#</th>
+                          <th style="width: 100px">Fecha</th>
+                          <th>Descripcion</th>
+                          <th >Categoria</th>
+                          <th>Cuenta</th>
+                          <th>Valor</th>
+                          <th style="width: 20px">Editar</th>
+                          <th style="width: 20px">borrar</th>
+
+                        </tr>
+
+                        {{#incomeTableMaker data}}
+                        {{/incomeTableMaker}}
+                      </tbody></table>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+              </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+
+
+
+
+  </div>
+ 
+  <div class="col-md-2">
+
+
+    <div class="row">
+        <div class="row">
+          <div class="col-md-11">
+                <div class="small-box bg-aqua ">
+                  <div class="inner">
+                    {{#if incomes.length}}
+                      {{#balance incomes expenses}}
+                      {{/balance}}
+                    {{/if}}
+                    
+
+                    <p>Saldo actual</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-cash"></i>
+                  </div>
+                  
+                </div>
+          </div>
+          <!-- small box -->
+          
+        </div>
+        <!-- ./col -->
+        <div class="row">
+          <!-- small box -->
+
+          <div class="col-md-11">
+            <div class="small-box bg-green">
+              <div class="inner">
+                {{#if incomes.length}}
+                  {{#incomeTotal incomes}}
+                  {{/incomeTotal}}
+                {{/if}}
+                <p>Ingresos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-arrow-graph-up-right"></i>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="row">
+          <!-- small box -->
+          <div class="col-md-11">
+            <div class="small-box bg-yellow">
+              <div class="inner">
+                {{#if expenses.length}}
+                  {{#expenseTotal expenses}}
+                  {{/expenseTotal}}
+                {{/if}}
+
+                <p>Gastos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-arrow-graph-down-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="row">
+          <!-- small box -->
+          <div class="col-md-11">
+            <div class="small-box bg-red">
+              <div class="inner">
+                <p>Tarjetas de credito</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-card"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+
+
+  </div>
+</div>
+          

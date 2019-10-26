@@ -303,6 +303,471 @@
 <!-- ./wrapper -->
 
 
+
+
+
+
+
+
+
+
+
+
+
+<!-- MODAL -->
+
+      <!-- line modal -->
+      <div class="modal fade bd-example-modal-lg" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
+          </div>
+          <div class="modal-body">
+            
+                  <!-- content goes here -->
+            <form action="/add_income" method="POST">
+                  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="currency">Introduzca el valor</label>
+                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-md-6">
+                      
+                      <div class="form-group">
+                        <label for="date">Fecha</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+
+                    <!-- /.col-lg-6 -->
+                  </div>
+                
+                <!-- /.input group -->
+              </div>
+
+                <div class="form-group">
+                  <label>Descripción</label>
+                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
+                </div>
+              
+              
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Categoría</label>
+                    <select class="form-control" name="category" id="sel1">
+                      {{#categoriesList Anything}}
+                      {{/categoriesList}}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Cuenta</label>
+                    <select class="form-control" name="account" id="sel1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" hidden="hidden" id="addIncome-button"></button>
+
+            </form>
+
+          </div>
+
+           <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button  class="btn btn-block btn-success btn-lg" onclick="addIncome()" >Guardar</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+      </div>
+<!--/MODAL-->
+
+
+
+      <!-- MODAL -->
+
+      <!-- line modal -->
+      <div class="modal fade bd-example-modal-lg" id="modalExpense" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo Gasto</h3>
+          </div>
+          <div class="modal-body">
+            
+                  <!-- content goes here -->
+            <form action="/add_expense" method="POST">
+                  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="currency">Introduzca el valor</label>
+                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-md-6">
+                      
+                      <div class="form-group">
+                        <label for="date">Fecha</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+
+                    <!-- /.col-lg-6 -->
+                  </div>
+                
+                <!-- /.input group -->
+              </div>
+
+                <div class="form-group">
+                  <label>Descripción</label>
+                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
+                </div>
+              
+              
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Categoría</label>
+                    <select class="form-control" name="category" id="sel1">
+                      {{#categoriesList Anything}}
+                      {{/categoriesList}}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Cuenta</label>
+                    <select class="form-control" name="account" id="sel1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" hidden="hidden" id="addExpense-button"></button>
+
+            </form>
+
+          </div>
+
+          <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn btn-block btn-success btn-lg" onclick="addExpense()">Guardar</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+      </div>
+<!--/MODAL-->
+
+
+      <!-- MODAL -->
+
+      <!-- line modal -->
+      <div class="modal fade bd-example-modal-lg" id="modalCard" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          {{#if Card}}
+
+          <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
+          </div>
+          <div class="modal-body">
+            
+                  <!-- content goes here -->
+            <form action="/add_income" method="POST">
+                  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="currency">Introduzca el valor</label>
+                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-md-6">
+                      
+                      <div class="form-group">
+                        <label for="date">Fecha</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+
+                    <!-- /.col-lg-6 -->
+                  </div>
+                
+                <!-- /.input group -->
+              </div>
+
+                <div class="form-group">
+                  <label>Descripción</label>
+                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
+                </div>
+              
+              
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Categoría</label>
+                    <select class="form-control" name="category" id="sel1">
+                      {{#categoriesList Anything}}
+                      {{/categoriesList}}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Cuenta</label>
+                    <select class="form-control" name="account" id="sel1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" hidden="hidden" id="addCard-button"></button>
+
+            </form>
+
+          </div>
+          
+          <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn btn-block btn-success btn-lg" onclick="addCard()">Guardar</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+          {{else}}
+
+          <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Tarjeta</h3>
+          </div>
+          <div class="modal-body">
+
+              <div class="row">
+                <div class="col-md-6">
+                    <img src="/img/Cerditos.svg" alt="cerdos">
+                </div>
+                <div class="col-md-6">
+                  <h1 class="text-center"><strong>¡Ops!</strong></h1>
+                  <h3 class="text-center">No tienes ninguna tarjeta aun puedes crear una a continuación.</h3>
+                </div>
+              </div>
+          </div>
+          
+          <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button"> 
+              <div class="btn-group" role="group">
+                <button class="btn btn-block btn-success btn-lg" >Crear tarjeta</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+          {{/if}}
+        
+        </div>
+      </div>
+<!--/MODAL-->
+
+      <div class="modal fade bd-example-modal-lg" id="modalSavings" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          {{#if save}}
+
+          <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
+          </div>
+          <div class="modal-body">
+            
+                  <!-- content goes here -->
+            <form action="/add_income" method="POST">
+                  
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="currency">Introduzca el valor</label>
+                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-md-6">
+                      
+                      <div class="form-group">
+                        <label for="date">Fecha</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+
+                    <!-- /.col-lg-6 -->
+                  </div>
+                
+                <!-- /.input group -->
+              </div>
+
+                <div class="form-group">
+                  <label>Descripción</label>
+                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
+                </div>
+              
+              
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Categoría</label>
+                    <select class="form-control" name="category" id="sel1">
+                      {{#categoriesList Anything}}
+                      {{/categoriesList}}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="sel1">Cuenta</label>
+                    <select class="form-control" name="account" id="sel1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" hidden="hidden" id="addSaving-button"></button>
+
+            </form>
+
+          </div>
+          
+          <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button class="btn btn-block btn-success btn-lg" onclick="addSaving()">Guardar</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+          {{else}}
+
+          <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Ahorros</h3>
+          </div>
+          <div class="modal-body">
+
+              <div class="row">
+                <div class="col-md-6">
+                    <img src="/img/Cerditos.svg" alt="cerdos">
+                </div>
+                <div class="col-md-6">
+                  <h1 class="text-center"><strong>¡Ops!</strong></h1>
+                  <h3 class="text-center">No tienes ningun ahorro definido, puedes crear una a continuación.</h3>
+                </div>
+              </div>
+          </div>
+          
+          <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button"> 
+              <div class="btn-group" role="group">
+                <button class="btn btn-block btn-success btn-lg" >Crear tarjeta</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+          {{/if}}
+        
+        </div>
+      </div>
+
+
 <!-- jQuery 3 -->
 <script src="/templates/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

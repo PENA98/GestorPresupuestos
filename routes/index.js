@@ -4,6 +4,7 @@ const { check } = require("express-validator");
 const homeController = require("../controllers/homeController");
 const userController = require("../controllers/userController");
 const walletController = require("../controllers/walletController")
+const dashboardController = require("../controllers/dashboardController")
 
 module.exports = () => {
 
@@ -45,15 +46,19 @@ module.exports = () => {
             .custom((value, { req }) => value === req.body.password)
     ], userController.saveUser);
 
-    // rutas para los gastos
-    router.get("/add_expense", walletController.addExpense)
+    // rutas para añadir gastos
+    router.post("/add_expense", walletController.addExpense)
 
-    // ruta para añadir un ingreso
+    // ruta para añadir ingresos
     router.post("/add_income", walletController.addIncome)
+
     // ruta start
     router.get("/start", walletController.start)
 
     // perfil
     router.get("/profile", userController.profile)
+
+    //ruta para las transacciones (ver tablas)
+    router.get("/transactions", dashboardController.showTable)
     return router;
 };

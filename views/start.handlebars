@@ -2,14 +2,14 @@
 
 <!-- Small boxes (Stat box) -->
       <div class="row">
+        {{#if Card}}
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              {{#if datos.length}}
-              
-                {{#test datos}}
-                {{/test}}
+              {{#if incomes.length}}
+                {{#balance incomes expenses}}
+                {{/balance}}
               {{/if}}
               
 
@@ -26,8 +26,10 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>L 53<sup style="font-size: 20px"></sup></h3>
-
+              {{#if incomes.length}}
+                {{#incomeTotal incomes}}
+                {{/incomeTotal}}
+              {{/if}}
               <p>Ingresos</p>
             </div>
             <div class="icon">
@@ -41,7 +43,10 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>L 44</h3>
+              {{#if expenses.length}}
+                {{#expenseTotal expenses}}
+                {{/expenseTotal}}
+              {{/if}}
 
               <p>Gastos</p>
             </div>
@@ -52,6 +57,7 @@
           </div>
         </div>
         <!-- ./col -->
+        
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-red">
@@ -66,403 +72,75 @@
             <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
+        {{else}}
+
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              {{#if incomes.length}}
+                {{#balance incomes expenses}}
+                {{/balance}}
+              {{/if}}
+              
+
+              <p>Saldo actual</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-cash"></i>
+            </div>
+            <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              {{#if incomes.length}}
+                {{#incomeTotal incomes}}
+                {{/incomeTotal}}
+              {{/if}}
+              <p>Ingresos</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-arrow-graph-up-right"></i>
+            </div>
+            <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-12">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              {{#if expenses.length}}
+                {{#expenseTotal expenses}}
+                {{/expenseTotal}}
+              {{/if}}
+
+              <p>Gastos</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-arrow-graph-down-right"></i>
+            </div>
+            <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        
+
+        {{/if}}
         <!-- ./col -->
       </div>
 
-      <!-- MODAL -->
-
-      <!-- line modal -->
-      <div class="modal fade bd-example-modal-lg" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
-          </div>
-          <div class="modal-body">
-            
-                  <!-- content goes here -->
-            <form action="/add_income" method="POST">
-                  
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
-                      </div>
-                      <!-- /input-group -->
-                    </div>
-                    <!-- /.col-lg-6 -->
-                    <div class="col-md-6">
-                      
-                      <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-
-                    <!-- /.col-lg-6 -->
-                  </div>
-                
-                <!-- /.input group -->
-              </div>
-
-                <div class="form-group">
-                  <label>Descripción</label>
-                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
-                </div>
-              
-              
-              <div class="row">
-                
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Categoría</label>
-                    <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Cuenta</label>
-                    <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" hidden="hidden" id="addIncome-button"></button>
-
-            </form>
-
-          </div>
-
-           <div class="modal-footer">
-            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
-              </div>
-              <div class="btn-group" role="group">
-                <button  class="btn btn-block btn-success btn-lg" onclick="addIncome()" >Guardar</button>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-        </div>
-      </div>
-<!--/MODAL-->
-
-
-
-      <!-- MODAL -->
-
-      <!-- line modal -->
-      <div class="modal fade bd-example-modal-lg" id="modalExpense" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
-          </div>
-          <div class="modal-body">
-            
-                  <!-- content goes here -->
-            <form action="/add_income" method="POST">
-                  
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
-                      </div>
-                      <!-- /input-group -->
-                    </div>
-                    <!-- /.col-lg-6 -->
-                    <div class="col-md-6">
-                      
-                      <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-
-                    <!-- /.col-lg-6 -->
-                  </div>
-                
-                <!-- /.input group -->
-              </div>
-
-                <div class="form-group">
-                  <label>Descripción</label>
-                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
-                </div>
-              
-              
-              <div class="row">
-                
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Categoría</label>
-                    <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Cuenta</label>
-                    <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" hidden="hidden" id="addExpense-button"></button>
-
-            </form>
-
-          </div>
-
-          <div class="modal-footer">
-            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
-              </div>
-              <div class="btn-group" role="group">
-                <button class="btn btn-block btn-success btn-lg" onclick="addExpense()">Guardar</button>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-        </div>
-      </div>
-<!--/MODAL-->
-
-
-      <!-- MODAL -->
-
-      <!-- line modal -->
-      <div class="modal fade bd-example-modal-lg" id="modalCard" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
-          </div>
-          <div class="modal-body">
-            
-                  <!-- content goes here -->
-            <form action="/add_income" method="POST">
-                  
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
-                      </div>
-                      <!-- /input-group -->
-                    </div>
-                    <!-- /.col-lg-6 -->
-                    <div class="col-md-6">
-                      
-                      <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-
-                    <!-- /.col-lg-6 -->
-                  </div>
-                
-                <!-- /.input group -->
-              </div>
-
-                <div class="form-group">
-                  <label>Descripción</label>
-                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
-                </div>
-              
-              
-              <div class="row">
-                
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Categoría</label>
-                    <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Cuenta</label>
-                    <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" hidden="hidden" id="addCard-button"></button>
-
-            </form>
-
-          </div>
-          
-          <div class="modal-footer">
-            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
-              </div>
-              <div class="btn-group" role="group">
-                <button class="btn btn-block btn-success btn-lg" onclick="addCard()">Guardar</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        </div>
-      </div>
-<!--/MODAL-->
-
-
-      <!-- MODAL -->
-
-      <!-- line modal -->
-      <div class="modal fade bd-example-modal-lg" id="modalSavings" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
-          </div>
-          <div class="modal-body">
-            
-                  <!-- content goes here -->
-            <form action="/add_income" method="POST">
-                  
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
-                      </div>
-                      <!-- /input-group -->
-                    </div>
-                    <!-- /.col-lg-6 -->
-                    <div class="col-md-6">
-                      
-                      <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
-
-                    <!-- /.col-lg-6 -->
-                  </div>
-                
-                <!-- /.input group -->
-              </div>
-
-                <div class="form-group">
-                  <label>Descripción</label>
-                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
-                </div>
-              
-              
-              <div class="row">
-                
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Categoría</label>
-                    <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Cuenta</label>
-                    <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <button type="submit" hidden="hidden" id="addSaving-button"></button>
-
-            </form>
-
-          </div>
-          
-          <div class="modal-footer">
-            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
-              <div class="btn-group" role="group">
-                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
-              </div>
-              <div class="btn-group" role="group">
-                <button class="btn btn-block btn-success btn-lg" onclick="addSaving()">Guardar</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        </div>
-      </div>
-<!--/MODAL-->
-
+      
       <!-- /.row -->
       <div class="row">
           <div class="col-md-6">
               <div class="box box-danger">
                 <div class="box-header">
-                  <h3 class="box-title">Donut Chart</h3>
+                  <h3 class="box-title">Gastos</h3>
                 </div>
                 <div class="box-body">
                   <canvas id="expenses" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
@@ -474,10 +152,9 @@
           <div class="col-md-6 ">
             <div class="box box-success" >
               <div class="box-header with-border">
-                <h3 class="box-title">Donut Chart</h3>  
+                <h3 class="box-title">Ingresos</h3>  
               </div>
               <div class="box-body">
-                
                 <canvas id="income" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
               </div>
               <!-- /.box-body -->

@@ -11,6 +11,14 @@ const walletSchema = new  mongoose.Schema({
     salary: {
         type: Number
     },
+    budget: [{
+        amount: {
+            type: Number
+        },
+        month: {
+            type: String
+        }
+    }],
     income: [{
         category: {
             type: String
@@ -37,6 +45,17 @@ const walletSchema = new  mongoose.Schema({
         }
 
     }],
+    creditCard: [{
+        name: {
+            type: String
+        },
+        limit: {
+            type: Number
+        },
+        payDate:{
+            type: String
+        }
+    }],
     savings: [{
         name: {
             type: String
@@ -61,11 +80,12 @@ const walletSchema = new  mongoose.Schema({
             type: String
         },
         date: {
-            type: Date,
+            type: String,
             required: true
         },
         account: {
-            name: String
+            type: String,
+            required: true
         }
     }]
 
