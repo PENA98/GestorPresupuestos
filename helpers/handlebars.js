@@ -24,20 +24,16 @@ module.exports = {
         let html = "";
 
         //mostrar las categorias
-        categories.forEach(caregory => {
-            html += `<li>${caregory}</li>`;
+        categories.forEach(category => {
+            html += `<option>${category}</option>`;
         });
 
         return (options.fn().html = html);
     
     },
-    namePrinter: (e, options) => {
-        let name = e.split(" ", 2 )
-        let html = "";
-        html += `   <span class="user-name">${name[0]}
-                            
-                        <strong>${name[1]}</strong>
-                    </span>`
-        return (options.fn().html = html);
+    test: (e, options) => {
+       console.log(e[0].amount)
+       let html = `<h3> L ${e[0].amount} </h3>`;
+       return (options.fn().html = html);
     }
 }

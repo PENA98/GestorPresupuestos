@@ -10,6 +10,7 @@ module.exports = () => {
     // home routes
     router.get("/", homeController.showLanding);
     router.get("/home", homeController.showHome)
+    router.get("/app_home", homeController.showAppHome)
 
 
     // user routes
@@ -47,10 +48,12 @@ module.exports = () => {
     // rutas para los gastos
     router.get("/add_expense", walletController.addExpense)
 
-    //ruta start
+    // ruta para añadir un ingreso
+    router.post("/add_income", walletController.addIncome)
+    // ruta start
     router.get("/start", walletController.start)
 
-    //perfil
+    // perfil
     router.get("/profile", userController.profile)
     return router;
 };

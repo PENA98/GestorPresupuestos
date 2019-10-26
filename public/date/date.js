@@ -1,7 +1,7 @@
 // https://github.com/uxsolutions/bootstrap-datepicker
 
 $('.dateselect').datepicker({
-    format: 'dd/mm/yyyy',
+    format: 'dd-mm-yyyy',
     // startDate: '-3d'
 });
 
@@ -14,4 +14,7 @@ $('.dateselect').datepicker({
 // }
 
 
- 
+$(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+})

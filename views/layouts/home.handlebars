@@ -54,7 +54,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="sidebar-mini wysihtml5-supported skin-red">
+<body class="sidebar-mini wysihtml5-supported skin-red" onload="incomeChart(`{{datos}}`)">
 <div class="wrapper">
 
   <header class="main-header">
@@ -281,15 +281,15 @@
     <section class="content">
     {{{body}}}
 
-      
+    <!--FAB-->
     <div class="inner-fabs">
       <div class="fab round green" id="fab4" data-toggle="modal" data-target="#squarespaceModal" data-tooltip="Agregar ingreso"><i class="ion ion-arrow-graph-up-right"></i></div>
-      <div class="fab round blue" id="fab3" data-tooltip="Agregar gasto"><i class="ion ion-arrow-graph-down-right"></i></div>
-      <div class="fab round yellow" id="fab2" data-tooltip="Crear gasto de la tarjeta"><i class="fa fa-credit-card"></i></div>
-      <div class="fab round otherblue" id="fab5" data-tooltip="Ahorros"><i class="fa fa-inbox"></i></div>
+      <div class="fab round blue" id="fab3" data-toggle="modal" data-target="#modalExpense"data-tooltip="Agregar gasto"><i class="ion ion-arrow-graph-down-right"></i></div>
+      <div class="fab round yellow" id="fab2" data-toggle="modal" data-target="#modalCard" data-tooltip="Crear gasto de la tarjeta"><i class="fa fa-credit-card"></i></div>
+      <div class="fab round otherblue" id="fab5" data-toggle="modal" data-target="#modalSavings" data-tooltip="Ahorros"><i class="fa fa-inbox"></i></div>
     </div>
     <div class="fab round" id="fab1"><i class="material-icons" id="fabIcon">add</i></div>
-      
+      <!--/FAB-->
       
     </section>
     
@@ -344,6 +344,11 @@
 <script src="/fab/fab.js"></script>
 <!-- Script para el calendario modal -->
 <script src="/date/date.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/Chart.min.js"></script>
+<script src="/js/Chart.js"></script>
+<script src="/js/Chart.bundle.js"></script>
+<script src="/js/ChartStart.js"></script>
 
 </body>
 </html>

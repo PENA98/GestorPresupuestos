@@ -24,5 +24,28 @@ exports.start = async(req, res) => {
     await wall.save();
     //guardar en la base de datos
     
-    res.redirect("/");
+    res.redirect("/home");
+}
+
+exports.addIncome = async(req, res) => {
+    wallet.updateOne({
+        userID: req.user._id
+    },
+    {
+        $push:{income:{
+            "category": req.body.category,
+            "amount": Number(req.body.amount),
+            "date": req.body.date,
+            "account": req.body.account,
+            "comment": req.body.comment
+        }}
+    },function(err, cb) {
+        console.log(err);
+        
+    }
+    )
+
+
+    res.redirect("/home");
+  
 }
