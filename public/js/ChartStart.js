@@ -2,17 +2,21 @@
 function incomeChart(e){
     
     let data = [e];
-    console.log(e);
+    
+    
     
 
-    Object.keys(e).forEach(function(key) {
+    console.log(Array.isArray(data));
 
-        console.log(key, e[key]);
-      
-      });
-    
+    console.log(data[0].amount)
+     
 
     let thisChart = document.getElementById("income");
+    console.log(thisChart);
+    console.log(typeof(thisChart));
+    
+    
+    
     let lineChart = new Chart(thisChart, {
         type: 'doughnut',
         data: {
@@ -56,5 +60,8 @@ function incomeChart(e){
             }
         }
     });
+
+    console.log(lineChart);
+    
     
 }

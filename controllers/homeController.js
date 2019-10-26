@@ -20,8 +20,11 @@ exports.showHome = async(req, res) => {
 
 exports.showAppHome = async(req, res) => {
     const wall = await wallet.findOne({userID: req.user._id});
-    console.log(wall.income)
+    console.log(wall)
+
     console.log(wall.income[0].amount);
+    console.log(Array.isArray(wall.income));
+    
 
     res.render("start" ,{
         layout: 'home.handlebars',
