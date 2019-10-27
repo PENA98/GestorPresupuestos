@@ -1,13 +1,13 @@
-
 const mongoose = require("mongoose");
 const wallet = mongoose.model("wallet");
 const categories = mongoose.model("category");
 
-exports.showTable = async(req, res) => {
+exports.showAccounts = async(req, res) => {
 
     const wall = await wallet.findOne({userID: req.user._id});
     const cat = await categories.findOne({userID: req.user._id});
 
+    
     let creditCard = false
     let savingsS = false
 
@@ -19,16 +19,37 @@ exports.showTable = async(req, res) => {
         savingsS = true
     }
 
-    res.render("transactions",{
+    console.log(wall);
+    
+
+    res.render("accounts",{
         layout: "home.handlebars",
-        data: wall,
-        cate: cat,
         tittle: "Wall-E",
         incomes: wall.income,
+        cate: cat,
+        data: wall,
         expenses: wall.expense,
-        actualURL: "transactions",
         Card: creditCard,
         save: savingsS,
+        actualURL: "accounts"
     })
+}
 
+exports.addAccount = async(req, res) => {
+    wallet.updateOne({
+        userID: req.user._id
+    },
+    {
+        $push:{account:{
+            "name": req.body.Name,
+            
+        }}
+    },function(err, cb) {
+        console.log(err);
+        
+    }
+    )
+
+    
+    res.redirect(req.params.url.replace(":", "/"));
 }

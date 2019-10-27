@@ -1,30 +1,11 @@
 const mongoose = require("mongoose");
-const wallet = mongoose.model("wallet");
 const categories = mongoose.model("category");
-
-exports.showHome = async(req, res) => {
-    const a = wallet.countDocuments({userID: req.user._id}, function(err, count){
-        if(count > 0){
-            res.redirect("/app_home")
-
-        }else{
-            res.render("getStarted" ,{
-                layout: 'home.handlebars',
-                tittle: "Wall-E"
-            });
-
-        }
-    })
-
-    
-    
-};
+const wallet = mongoose.model("wallet");
 
 
-exports.showAppHome = async(req, res) => {
+exports.showCategories = async(req, res) => {
     const wall = await wallet.findOne({userID: req.user._id});
     const cat = await categories.findOne({userID: req.user._id});
-
     
     let creditCard = false
     let savingsS = false
@@ -38,21 +19,34 @@ exports.showAppHome = async(req, res) => {
     }
 
     
-    res.render("start" ,{
+    res.render("categories" ,{
         layout: 'home.handlebars',
         tittle: "Wall-E",
         incomes: wall.income,
-        cate: cat,
         data: wall,
+        cate: cat,
         expenses: wall.expense,
         Card: creditCard,
         save: savingsS,
-        actualURL: "app_home"
+        actualURL: "categories"
 
     });
-    
 }
 
-exports.showLanding = function(req, res){
-    res.render("landing");
-};
+exports.saveCategory = async(req, res) => {
+
+        categories.updateOne({
+            userID: req.user._id
+        },
+        {
+            $push:{category:{
+                "name": req.body.Name,   
+            }}
+        },function(err, cb) {
+            console.log(err);
+            
+        }
+        )
+    
+    res.redirect(req.params.url.replace(":", "/"));
+}

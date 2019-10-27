@@ -36,14 +36,10 @@ const walletSchema = new  mongoose.Schema({
             type: String
         }
     }],
-    acounts: [{
+    account: [{
         name: {
             type: String
-        },
-        amount: {
-            type: Number
         }
-
     }],
     creditCard: [{
         name: {
@@ -54,6 +50,9 @@ const walletSchema = new  mongoose.Schema({
         },
         payDate:{
             type: String
+        },
+        amount:{
+            type: Number
         }
     }],
     savings: [{

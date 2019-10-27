@@ -103,9 +103,11 @@
   </div>
  
   <div class="col-md-2">
+    
 
+    {{#if Card}}
 
-    <div class="row">
+      <div class="row">
         <div class="row">
           <div class="col-md-11">
                 <div class="small-box bg-aqua ">
@@ -113,6 +115,9 @@
                     {{#if incomes.length}}
                       {{#balance incomes expenses}}
                       {{/balance}}
+
+                    {{else}}
+                    <h3>L 0</h3>  
                     {{/if}}
                     
 
@@ -137,6 +142,9 @@
                 {{#if incomes.length}}
                   {{#incomeTotal incomes}}
                   {{/incomeTotal}}
+                {{else}}
+                <h3>L 0</h3>
+
                 {{/if}}
                 <p>Ingresos</p>
               </div>
@@ -156,6 +164,9 @@
                 {{#if expenses.length}}
                   {{#expenseTotal expenses}}
                   {{/expenseTotal}}
+                {{else}}
+                <h3>L 0</h3>
+
                 {{/if}}
 
                 <p>Gastos</p>
@@ -182,6 +193,87 @@
         </div>
         <!-- ./col -->
       </div>
+
+    {{else}}
+
+    <div class="row">
+        <div class="row">
+          <div class="col-md-11">
+                <div class="small-box bg-aqua ">
+                  <div class="inner">
+                    {{#if incomes.length}}
+                      {{#balance incomes expenses}}
+                      {{/balance}}
+
+                    {{else}}
+                    <h3>L 0</h3>  
+                    {{/if}}
+                    
+
+                    <p>Saldo actual</p>
+                  </div>
+                  <div class="icon">
+                    <i class="ion ion-cash"></i>
+                  </div>
+                  
+                </div>
+          </div>
+          <!-- small box -->
+          
+        </div>
+        <!-- ./col -->
+        <div class="row">
+          <!-- small box -->
+
+          <div class="col-md-11">
+            <div class="small-box bg-green">
+              <div class="inner">
+                {{#if incomes.length}}
+                  {{#incomeTotal incomes}}
+                  {{/incomeTotal}}
+                {{else}}
+                <h3>L 0</h3>
+
+                {{/if}}
+                <p>Ingresos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-arrow-graph-up-right"></i>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="row">
+          <!-- small box -->
+          <div class="col-md-11">
+            <div class="small-box bg-yellow">
+              <div class="inner">
+                {{#if expenses.length}}
+                  {{#expenseTotal expenses}}
+                  {{/expenseTotal}}
+                {{else}}
+                <h3>L 0</h3>
+
+                {{/if}}
+
+                <p>Gastos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-arrow-graph-down-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ./col -->
+        <!-- ./col -->
+      </div>
+
+
+    {{/if}}
+
+    
 
 
   </div>

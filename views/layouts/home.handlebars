@@ -217,6 +217,12 @@
           </a>
         </li>
         
+        <li >
+          <a href="/categories">
+            <i class="fa fa-list-ol"></i> <span>Categorias</span>
+          </a>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-university"></i>
@@ -227,7 +233,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/accounts"><i class="fa fa-address-book"></i> Mis cuentas</a></li>
-            <li><a href="/create_account"><i class="fa fa-plus-square"></i> Agregar cuenta</a></li>
           </ul>
         </li>
 
@@ -239,7 +244,6 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/create_card"><i class="fa fa-plus-square"></i>Crear</a></li>
             <li><a href="/cards"><i class="fa fa-eye"></i>Ver </a></li>
           </ul>
         </li>
@@ -327,8 +331,7 @@
           <div class="modal-body">
             
                   <!-- content goes here -->
-            <form action="/add_income" method="POST">
-                  
+            <form action='/add_income/:{{actualURL}}' method="POST">         
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
@@ -369,8 +372,8 @@
                   <div class="form-group">
                     <label for="sel1">Categoría</label>
                     <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
+                      {{#categoriesListForSelect cate}}
+                      {{/categoriesListForSelect}}
                     </select>
                   </div>
                 </div>
@@ -379,10 +382,8 @@
                   <div class="form-group">
                     <label for="sel1">Cuenta</label>
                     <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
+                      {{#accountList data}}
+                      {{/accountList}}
                     </select>
                   </div>
                 </div>
@@ -412,6 +413,146 @@
 
 
 
+
+
+
+<!-- MODAL -->
+
+      <!-- line modal -->
+      <div class="modal fade bd-example-modal-lg" id="addCredit" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
+          </div>
+          <div class="modal-body">
+            
+                  <!-- content goes here -->
+            <form action='/add_card/:{{actualURL}}' method="POST">         
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="NameCard">Nombre</label>
+                        <input type="text" autocomplete="off" placeholder="nombre de la tarjeta" class="form-control text-left" id="NameCard" name="nameCard">
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-md-6">
+                      
+                      <div class="form-group">
+                        <label for="date">Fecha de pago</label>
+                        <div class="input-group date">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
+                        </div>
+                        <!-- /.input group -->
+                      </div>
+
+                    <!-- /.col-lg-6 -->
+                  </div>
+                
+                <!-- /.input group -->
+              </div>
+
+                <div class="form-group">
+                  <label>Limite</label>
+                  <input type="Number" autocomplete="off" name="limit" class="form-control" placeholder="Ingrese el limite de su tarjeta">
+                </div>
+            
+
+              <button type="submit" hidden="hidden" id="addCreditCard-button"></button>
+
+            </form>
+
+          </div>
+
+           <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button  class="btn btn-block btn-success btn-lg" onclick="addCreditCard()" >Guardar</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+      </div>
+<!--/MODAL-->
+
+
+
+
+<!-- MODAL -->
+
+      <!-- line modal -->
+      <div class="modal fade bd-example-modal-lg" id="addSaving" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
+          </div>
+          <div class="modal-body">
+            
+                  <!-- content goes here -->
+            <form action='/add_saving/:{{actualURL}}' method="POST">         
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="NameCard">Nombre</label>
+                        <input type="text" autocomplete="off" placeholder="nombre del ahorro" class="form-control text-left" id="NameCard" name="saveName">
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+                    <!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label>Meta de ahorro</label>
+                        <input type="Number" autocomplete="off" name="goal" class="form-control" placeholder="Ingrese su meta de ahorro">
+                      </div>
+                    </div>
+                <!-- /.input group -->
+              </div>
+
+                
+              <button type="submit" hidden="hidden" id="addSavingS-button"></button>
+
+            </form>
+
+          </div>
+
+           <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button  class="btn btn-block btn-success btn-lg" onclick="addSavingS()" >Guardar</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+      </div>
+<!--/MODAL-->
+
+
+
+
+
+
+
+
+
+
       <!-- MODAL -->
 
       <!-- line modal -->
@@ -425,7 +566,7 @@
           <div class="modal-body">
             
                   <!-- content goes here -->
-            <form action="/add_expense" method="POST">
+            <form action='/add_expense/:{{actualURL}}' method="POST">
                   
                   <div class="row">
                     <div class="col-md-6">
@@ -467,8 +608,8 @@
                   <div class="form-group">
                     <label for="sel1">Categoría</label>
                     <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
+                      {{#categoriesListForSelect cate}}
+                      {{/categoriesListForSelect}}
                     </select>
                   </div>
                 </div>
@@ -477,10 +618,8 @@
                   <div class="form-group">
                     <label for="sel1">Cuenta</label>
                     <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
+                      {{#accountList data}}
+                      {{/accountList}}
                     </select>
                   </div>
                 </div>
@@ -524,13 +663,13 @@
           <div class="modal-body">
             
                   <!-- content goes here -->
-            <form action="/add_income" method="POST">
+            <form action='/add_cardExpense/:{{actualURL}}' method="POST">
                   
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                        <label for="currency">Cantidad gastada en tarjeta</label>
+                        <input type="number" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
                       </div>
                       <!-- /input-group -->
                     </div>
@@ -538,53 +677,18 @@
                     <div class="col-md-6">
                       
                       <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
+                    <label for="sel1">Nombre de la tarjeta</label>
+                    <select class="form-control" name="cardName" id="sel1">
+                      {{#cardList data}}
+                      {{/cardList}}
+                    </select>
+                  </div>
 
                     <!-- /.col-lg-6 -->
                   </div>
                 
                 <!-- /.input group -->
               </div>
-
-                <div class="form-group">
-                  <label>Descripción</label>
-                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
-                </div>
-              
-              
-              <div class="row">
-                
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Categoría</label>
-                    <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Cuenta</label>
-                    <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
               <button type="submit" hidden="hidden" id="addCard-button"></button>
 
             </form>
@@ -595,6 +699,9 @@
             <div class="btn-group btn-group-justified" role="group" aria-label="group button">
               <div class="btn-group" role="group">
                 <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button data-toggle="modal" data-target="#addCredit" data-dismiss="modal" type="button" class="btn btn-block btn-info btn-lg">Crear tarjeta</button>
               </div>
               <div class="btn-group" role="group">
                 <button class="btn btn-block btn-success btn-lg" onclick="addCard()">Guardar</button>
@@ -627,7 +734,7 @@
           <div class="modal-footer">
             <div class="btn-group btn-group-justified" role="group" aria-label="group button"> 
               <div class="btn-group" role="group">
-                <button class="btn btn-block btn-success btn-lg" >Crear tarjeta</button>
+                <button data-toggle="modal" data-target="#addCredit"  data-dismiss="modal" class="btn btn-block btn-success btn-lg" >Crear tarjeta</button>
               </div>
             </div>
           </div>
@@ -640,6 +747,10 @@
       </div>
 <!--/MODAL-->
 
+
+
+
+
       <div class="modal fade bd-example-modal-lg" id="modalSavings" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           {{#if save}}
@@ -647,18 +758,18 @@
           <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
+            <h3 class="modal-title" id="lineModalLabel">Agregar a ahorro</h3>
           </div>
           <div class="modal-body">
             
                   <!-- content goes here -->
-            <form action="/add_income" method="POST">
+            <form action='/add_savings/:{{actualURL}}' method="POST">
                   
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                        <label for="currency">Cantidad a agregar al ahorro</label>
+                        <input type="number" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
                       </div>
                       <!-- /input-group -->
                     </div>
@@ -666,15 +777,12 @@
                     <div class="col-md-6">
                       
                       <div class="form-group">
-                        <label for="date">Fecha</label>
-                        <div class="input-group date">
-                          <div class="input-group-addon">
-                            <i class="fa fa-calendar"></i>
-                          </div>
-                          <input type="text" autocomplete="off" name="date" class="form-control pull-right dateselect" id="datepicker" required="required">
-                        </div>
-                        <!-- /.input group -->
-                      </div>
+                    <label for="sel1">Nombre del ahorro</label>
+                    <select class="form-control" name="saveName" id="sel1">
+                      {{#savingList data}}
+                      {{/savingList}}
+                    </select>
+                  </div>
 
                     <!-- /.col-lg-6 -->
                   </div>
@@ -682,39 +790,7 @@
                 <!-- /.input group -->
               </div>
 
-                <div class="form-group">
-                  <label>Descripción</label>
-                  <input type="text" autocomplete="off" name="comment" class="form-control" placeholder="Descripcion">
-                </div>
-              
-              
-              <div class="row">
-                
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Categoría</label>
-                    <select class="form-control" name="category" id="sel1">
-                      {{#categoriesList Anything}}
-                      {{/categoriesList}}
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="sel1">Cuenta</label>
-                    <select class="form-control" name="account" id="sel1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
               <button type="submit" hidden="hidden" id="addSaving-button"></button>
-
             </form>
 
           </div>
@@ -723,6 +799,9 @@
             <div class="btn-group btn-group-justified" role="group" aria-label="group button">
               <div class="btn-group" role="group">
                 <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button data-toggle="modal" data-target="#addSaving" data-dismiss="modal" type="button" class="btn btn-block btn-info btn-lg">Crear ahorro</button>
               </div>
               <div class="btn-group" role="group">
                 <button class="btn btn-block btn-success btn-lg" onclick="addSaving()">Guardar</button>
@@ -755,7 +834,7 @@
           <div class="modal-footer">
             <div class="btn-group btn-group-justified" role="group" aria-label="group button"> 
               <div class="btn-group" role="group">
-                <button class="btn btn-block btn-success btn-lg" >Crear tarjeta</button>
+                <button data-toggle="modal" data-target="#addSaving" data-dismiss="modal" class="btn btn-block btn-success btn-lg"  >Crear ahorro</button>
               </div>
             </div>
           </div>
@@ -766,6 +845,15 @@
         
         </div>
       </div>
+
+
+
+
+
+
+
+
+
 
 
 <!-- jQuery 3 -->

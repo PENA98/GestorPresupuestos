@@ -10,6 +10,10 @@
               {{#if incomes.length}}
                 {{#balance incomes expenses}}
                 {{/balance}}
+
+              {{else}}
+              <h3>L 0</h3>
+
               {{/if}}
               
 
@@ -29,6 +33,9 @@
               {{#if incomes.length}}
                 {{#incomeTotal incomes}}
                 {{/incomeTotal}}
+              {{else}}
+              <h3>L 0</h3>
+               
               {{/if}}
               <p>Ingresos</p>
             </div>
@@ -46,6 +53,9 @@
               {{#if expenses.length}}
                 {{#expenseTotal expenses}}
                 {{/expenseTotal}}
+
+              {{else}}
+              <h3>L 0</h3>
               {{/if}}
 
               <p>Gastos</p>
@@ -81,6 +91,9 @@
               {{#if incomes.length}}
                 {{#balance incomes expenses}}
                 {{/balance}}
+
+              {{else}}
+              <h3>L 0</h3>
               {{/if}}
               
 
@@ -100,6 +113,9 @@
               {{#if incomes.length}}
                 {{#incomeTotal incomes}}
                 {{/incomeTotal}}
+
+              {{else}}
+              <h3>L 0</h3>
               {{/if}}
               <p>Ingresos</p>
             </div>
@@ -117,6 +133,9 @@
               {{#if expenses.length}}
                 {{#expenseTotal expenses}}
                 {{/expenseTotal}}
+              {{else}}
+              <h3>L 0</h3>
+
               {{/if}}
 
               <p>Gastos</p>
