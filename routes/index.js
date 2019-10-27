@@ -76,6 +76,9 @@ module.exports = () => {
     // ruta para las categorias
     router.get("/categories", categoriesController.showCategories)
 
+    // rita para las tarjetas
+    router.get("/cards", walletController.showCards)
+
     //ruta para editar gastos
     router.get("/edit/:url", walletController.editExpense)
 

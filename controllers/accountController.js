@@ -29,6 +29,7 @@ exports.showAccounts = async(req, res) => {
         cate: cat,
         data: wall,
         expenses: wall.expense,
+        chartData: JSON.stringify(wall),
         Card: creditCard,
         save: savingsS,
         actualURL: "accounts"

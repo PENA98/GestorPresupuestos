@@ -25,6 +25,7 @@ exports.showCategories = async(req, res) => {
         incomes: wall.income,
         data: wall,
         cate: cat,
+        chartData: JSON.stringify(wall),
         expenses: wall.expense,
         Card: creditCard,
         save: savingsS,

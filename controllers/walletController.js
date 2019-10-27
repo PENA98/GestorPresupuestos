@@ -175,7 +175,7 @@ exports.saveAdder = async(req, res) => {
     sav.savings.forEach(function(a, index){
         if (a.name == req.body.saveName) {
             realIndex = index
-            console.log("AHUEVOOOOOOOOOOOO");
+            console.log("Funciona");
             
         }
         console.log(a);
@@ -290,7 +290,41 @@ exports.showSavings = async(req, res) => {
         data: wall,
         expenses: wall.expense,
         Card: creditCard,
+        chartData: JSON.stringify(wall),
         save: savingsS,
         actualURL: "savings"
+    })
+}
+
+exports.showCards = async(req, res) => {
+
+    
+    const wall = await wallet.findOne({userID: req.user._id});
+    const cat = await categories.findOne({userID: req.user._id});
+
+    
+    let creditCard = false
+    let savingsS = false
+
+    if(wall.creditCard.length > 0 ) {
+        creditCard = true
+    }
+
+    if(wall.savings.length > 0 ) {
+        savingsS = true
+    }
+
+
+    res.render("cards",{
+        layout: 'home.handlebars',
+        tittle: "Wall-E",
+        incomes: wall.income,
+        cate: cat,
+        data: wall,
+        expenses: wall.expense,
+        Card: creditCard,
+        chartData: JSON.stringify(wall),
+        save: savingsS,
+        actualURL: "cards"
     })
 }

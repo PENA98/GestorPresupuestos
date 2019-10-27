@@ -27,6 +27,7 @@ exports.showTable = async(req, res) => {
         incomes: wall.income,
         expenses: wall.expense,
         actualURL: "transactions",
+        chartData: JSON.stringify(wall),
         Card: creditCard,
         save: savingsS,
     })

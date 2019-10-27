@@ -38,12 +38,16 @@ exports.showAppHome = async(req, res) => {
     }
 
     
+    
+
+
     res.render("start" ,{
         layout: 'home.handlebars',
         tittle: "Wall-E",
         incomes: wall.income,
         cate: cat,
         data: wall,
+        chartData: JSON.stringify(wall),
         expenses: wall.expense,
         Card: creditCard,
         save: savingsS,

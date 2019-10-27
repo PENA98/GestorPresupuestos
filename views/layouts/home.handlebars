@@ -54,7 +54,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="sidebar-mini wysihtml5-supported skin-red">
+<body class="sidebar-mini wysihtml5-supported skin-red" onload="incomeChart(`{{chartData}}`)">
 <div class="wrapper">
 
   <header class="main-header">
@@ -236,16 +236,10 @@
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#">
+        <li>
+          <a href="/cards">
             <i class="fa fa-credit-card"></i> <span>Tarjetas de credito</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="/cards"><i class="fa fa-eye"></i>Ver </a></li>
-          </ul>
         </li>
 
         <li class="treeview">
@@ -261,17 +255,11 @@
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#">
+        <li>
+          <a href="/savings">
             <i class="fa fa-inbox"></i> <span>Ahorros</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="/savings"><i class="fa fa-circle-o"></i>Ver ahorros</a></li>
-            <li><a href="/new_saving"><i class="fa fa-circle-o"></i>Crear ahorro </a></li>
-          </ul>
+          
         </li>
         
         

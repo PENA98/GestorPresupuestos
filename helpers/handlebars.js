@@ -307,6 +307,60 @@ module.exports = {
         return (options.fn().html = html);
 
     },
+    cardMaker: (e, options) => {
+
+
+        let html = "";
+
+        e.creditCard.forEach(sv =>{
+            let percentage = 0;
+
+            percentage = Math.round((sv.amount/sv.limit)*100)
+
+            html +=`<div class="col-lg-4">
+            <div class="box box-success ">
+            <div class="box-header with-border">
+            <h2>${sv.name}</h2>
+            </div><div class="box-body">
+                <div class="row">
+                <div class="col-lg-4">
+                <h3>Porcentaje</h3>
+                <strong class="text-red">L ${sv.amount}.00 - ${percentage}%</strong>
+                </div><div class="col-lg-4">
+                <h3>Fecha de pago</h3>
+                <strong class="text-red">${sv.payDate}</strong>
+                </div>
+                <div class="col-lg-4">
+                <h3>Limite</h3>
+                <strong class="text-green">L ${sv.limit}.00</strong>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-red" role="progressbar" aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100" style="width: ${percentage}%">
+                            <span class="sr-only">${percentage}% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>`
+        })
+        
+        
+       /*
+       
+       
+
+       */
+        
+    
+
+        return (options.fn().html = html);
+
+    },
     accountMaker: (e, options) => {
 
 
@@ -357,53 +411,6 @@ module.exports = {
     
 
         return (options.fn().html = html);
-
-    },
-    incomeChart: (e, options) => {
-        const thisChart = document.getElementById("income");
-        let lineChart = new Chart(thisChart, {
-            type: 'doughnut',
-            data: {
-                labels: ['comida', 'transporte', 'educacion', 'facturas', 'carro', 'deportes'],
-                datasets: [{
-                    label: "hola",
-                    data: [10, 2, 5, 6, 7, 9],
-                    backgroundColor : [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                animation: {
-                    animateScale: true
-                },
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            display: false
-                        },
-                        gridLines: {
-                            display: false
-                        }
-                    }]
-        
-                }
-            }
-        });
 
     }
 }
