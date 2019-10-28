@@ -4,20 +4,6 @@ const categories = mongoose.model("category");
 
 exports.showHome = async(req, res) => {
 
-    const wall = await wallet.findOne({userID: req.user._id});
-    const cat = await categories.findOne({userID: req.user._id});
-
-    
-    let creditCard = false
-    let savingsS = false
-
-    if(wall.creditCard.length > 0 ) {
-        creditCard = true
-    }
-
-    if(wall.savings.length > 0 ) {
-        savingsS = true
-    }
 
     const a = wallet.countDocuments({userID: req.user._id}, function(err, count){
         if(count > 0){
@@ -27,13 +13,8 @@ exports.showHome = async(req, res) => {
             res.render("getStarted" ,{
                 layout: 'home.handlebars',
                 tittle: "Wall-E",
-                incomes: wall.income,
-                cate: cat,
-                data: wall,
-                chartData: JSON.stringify(wall),
-                expenses: wall.expense,
-                Card: creditCard,
-                save: savingsS
+                data: false
+                
             });
 
         }
