@@ -210,7 +210,7 @@
             <li class="active"><a href="/home"><i class="fa fa-list"></i> Vista general</a></li>
           </ul>
         </li>
-
+        {{#if data}}
         <li >
           <a href="/transactions">
             <i class="fa fa-table"></i> <span>Transacciones</span>
@@ -251,7 +251,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/graficos"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="/graficos"><i class="fa fa-circle-o"></i> Resumen</a></li>
           </ul>
         </li>
 
@@ -262,7 +262,7 @@
           
         </li>
         
-        
+        {{/if}}
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -274,13 +274,17 @@
     {{{body}}}
 
     <!--FAB-->
+    {{#if data}}
     <div class="inner-fabs">
       <div class="fab round green" id="fab4" data-toggle="modal" data-target="#squarespaceModal" data-tooltip="Agregar ingreso"><i class="ion ion-arrow-graph-up-right"></i></div>
       <div class="fab round blue" id="fab3" data-toggle="modal" data-target="#modalExpense"data-tooltip="Agregar gasto"><i class="ion ion-arrow-graph-down-right"></i></div>
       <div class="fab round yellow" id="fab2" data-toggle="modal" data-target="#modalCard" data-tooltip="Crear gasto de la tarjeta"><i class="fa fa-credit-card"></i></div>
       <div class="fab round otherblue" id="fab5" data-toggle="modal" data-target="#modalSavings" data-tooltip="Ahorros"><i class="fa fa-inbox"></i></div>
     </div>
+    
+    
     <div class="fab round" id="fab1"><i class="material-icons" id="fabIcon">add</i></div>
+    {{/if}}
       <!--/FAB-->
       
     </section>
@@ -304,7 +308,7 @@
 
 
 
-
+{{#if data}}
 
 <!-- MODAL -->
 
@@ -324,7 +328,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                        <input type="number" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
                       </div>
                       <!-- /input-group -->
                     </div>
@@ -560,7 +564,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="currency">Introduzca el valor</label>
-                        <input type="text" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+                        <input type="number" autocomplete="off"  class="form-control text-left" id="currency" name="amount" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
                       </div>
                       <!-- /input-group -->
                     </div>
@@ -833,6 +837,7 @@
         
         </div>
       </div>
+    {{/if}}
 
 
 

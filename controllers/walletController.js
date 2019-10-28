@@ -34,32 +34,14 @@ exports.start = async(req, res) => {
         salary: req.body.salary
     });
 
-    const cat = new categories({
-        userID: req.user._id
-    })
+    
 
-    cat.save(function(err, cb){
-        console.log(err);
-        
-    })
-
-    wall.save(function(err, cb){
+    await wall.save(function(err, cb){
         console.log(err);
         
     });
 
-
-    wallet.updateOne({
-        userID: req.user._id
-    },
-    {
-        $push: {account:{
-            "name": req.body.accountName
-        }}
-    },
-    function(err, cb){
-        console.log(err);
-    });
+    
 
     let d = new Date();
     let month = d.getMonth();
@@ -77,8 +59,31 @@ exports.start = async(req, res) => {
     function(err, cb){
         console.log(err);
     });
+
+    wallet.updateOne({
+        userID: req.user._id
+    },
+    {
+        $push: {account:{
+            "name": req.body.accountName
+        }}
+    },
+    function(err, cb){
+        console.log(err);
+    });
+
     
     
+    const cat = new categories({
+        userID: req.user._id
+    })
+
+    await cat.save(function(err, cb){
+        console.log(err);
+        
+    })
+
+
     res.redirect("/app_home");
 
     //guardar en la base de datos
