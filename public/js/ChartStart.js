@@ -42,12 +42,12 @@ function incomeChart(e){
                 label: "hola",
                 data: numbers,
                 backgroundColor : [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -117,12 +117,12 @@ function incomeChart(e){
                 label: "hola",
                 data: numbers2,
                 backgroundColor : [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)',
+                    'rgba(255, 159, 64, 0.5)'
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -153,7 +153,83 @@ function incomeChart(e){
         }
     });
 
-    console.log(lineChart);
+
+    let labelz3 = [];
+    let numbers3 = [];
+    
+    obj.expense.forEach(inc => {
+        console.log(inc.category);
+        if (!labelz3.includes(inc.category)) {
+            labelz3.push(inc.category);
+        }
+    });
+
+    labelz3.forEach(function(lab, index){
+        let sum = 0;
+        obj.expense.forEach(inc => {
+            if (lab == inc.category) {
+                console.log(inc.amount);
+                sum += Number(inc.amount);
+            }
+        });
+        numbers3.push(sum);
+    })
+
+
+    
+    console.log(labelz3);
+    console.log(numbers3)
+    
+
+    let thisChart3 = document.getElementById("categories");
+    
+    
+    let lineChart3 = new Chart(thisChart3, {
+        type: 'bar',
+        data: {
+            labels: labelz3,
+            datasets: [{
+                label: "gastos por categorias",
+                data: numbers3,
+                backgroundColor : [
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)',
+                    'rgba(75, 192, 192)',
+                    'rgba(153, 102, 255)',
+                    'rgba(255, 159, 64)'
+                ],
+                borderColor: [
+                    'rgba(0, 0, 0)',
+                    'rgba(0, 0, 0)',
+                    'rgba(0, 0, 0)',
+                    'rgba(0, 0, 0)',
+                    'rgba(0, 0, 0)',
+                    'rgba(0, 0, 0)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            animation: {
+                animateScale: true
+            },
+            scales: {
+                yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+ 
+                }]
+    
+            }
+        }
+    });
+
+    console.log(lineChart3);
+
+
+
     
     
 }

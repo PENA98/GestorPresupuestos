@@ -80,7 +80,7 @@ module.exports = () => {
     router.get("/cards", walletController.showCards)
 
     //ruta para editar gastos
-    router.get("/edit/:url", walletController.editExpense)
+    //router.get("/edit/:url", walletController.editExpense)
 
     //ruta para savings
     router.get("/savings", walletController.showSavings)
@@ -95,6 +95,10 @@ module.exports = () => {
     router.get("/profile", userController.profile)
 
     //ruta para las transacciones (ver tablas)
-    router.get("/transactions", dashboardController.showTable)
+    router.get("/transactions", dashboardController.showTable);
+
+    router.delete("/transactions/:id", walletController.eliminarIncome);
+
+    router.get("*", homeController.Error);
     return router;
 };

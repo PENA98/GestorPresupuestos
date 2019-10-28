@@ -328,3 +328,8 @@ exports.showCards = async(req, res) => {
         actualURL: "cards"
     })
 }
+
+exports.eliminarIncome = async(req, res) => {
+    console.log("ads");
+    
+}

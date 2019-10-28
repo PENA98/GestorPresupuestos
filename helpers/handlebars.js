@@ -95,6 +95,14 @@ module.exports = {
         return (options.fn().html = html);
     
     },
+    cardTotal: (e, options) => {
+        let totalAmount = 0;
+        e.creditCard.forEach(am => {
+            totalAmount += am.amount
+        });
+        let html = `<h3> L ${totalAmount} </h3>`;
+        return (options.fn().html = html);
+     },
     incomeTotal: (e, options) => {
        let totalAmount = 0;
        e.forEach(income => {
@@ -139,7 +147,7 @@ module.exports = {
                     <td>${inc.account}</td>
                     <td class="text-green">L ${inc.amount}</td>
                     <td>
-                        <a href="#"><i class="fa fa-edit"></i></a>
+                        <a href="/edit/:${inc._id}"><i class="fa fa-edit"></i></a>
                     </td>
                     <td>
                         <a href="#"><i class="fa fa-trash-o"></i></a>
@@ -159,7 +167,7 @@ module.exports = {
                     <td>${exp.account}</td>
                     <td class="text-red">L ${exp.amount}</td>
                     <td>
-                        <a href="#"><i class="fa fa-edit"></i></a>
+                        <a href="/edit/:${exp._id}"><i class="fa fa-edit"></i></a>
                     </td>
                     <td>
                         <a href="#"><i class="fa fa-trash-o"></i></a>
@@ -211,10 +219,10 @@ module.exports = {
                     <td>${inc.account}</td>
                     <td class="text-green"> L ${inc.amount}</td>
                     <td>
-                        <a href="#"><i class="fa fa-edit"></i></a>
+                        <a href="/edit/:${inc._id}" ><i class="fa fa-edit"></i></a>
                     </td>
                     <td>
-                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                        <a href="#" data-eliminar="${inc._id}"><i class="fa fa-trash-o"></i></a>
                     </td>
                     </tr>
                     `
@@ -347,6 +355,55 @@ module.exports = {
                 </div>
                 </div>
                 </div>`
+        })
+        
+        
+       /*
+       
+       
+
+       */
+        
+    
+
+        return (options.fn().html = html);
+
+    },
+    budgetMaker: (e, options) => {
+
+
+        let html = "";
+
+
+
+        e.budget.forEach(sv =>{
+            let percentage = 0;
+
+            let totalAmount = 0;
+            e.expense.forEach(expe => {
+                totalAmount += expe.amount
+            });
+    
+
+            percentage = Math.round((totalAmount/sv.amount)*100)
+
+            html +=`<div class="row justify-content-between">
+                    <div class="col-lg-4">
+                    <h4>porcentaje gastado</h4>
+                    <h2><strong>L ${totalAmount}.00 - ${percentage}%</strong></h2>
+                    </div>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                    <h4>Limite</h4>
+                    <h2><strong>L ${sv.amount}.00</strong></h2>
+                    </div>
+                    </div>
+
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-yellow" role="progressbar" aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100" style="width: ${percentage}%">
+                    <span class="sr-only">${percentage}% Complete (warning)</span>
+                    </div>
+                    </div>`
         })
         
         
