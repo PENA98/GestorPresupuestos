@@ -29,51 +29,26 @@ exports.addExpense = async(req, res) => {
 
 exports.start = async(req, res) => {
     //asignar el id del usuario loggeado al modelo de mongo
+
+    let d = new Date();
+    let month1 = d.getMonth();
+
     const wall = new wallet({
         userID: req.user._id,
-        salary: req.body.salary
+        salary: req.body.salary,
+        budget: {amount: req.body.budget, month: month1},
+        account: {name: req.body.accountName}
+
     });
 
     
-
+    console.log(wall);
+    
     await wall.save(function(err, cb){
         console.log(err);
         
     });
 
-    
-
-    let d = new Date();
-    let month = d.getMonth();
-
-    
-    wallet.updateOne({
-        userID: req.user._id
-    },
-    {
-        $push: {budget:{
-            "amount": req.body.budget,
-            "month": month
-        }}
-    },
-    function(err, cb){
-        console.log(err);
-    });
-
-    wallet.updateOne({
-        userID: req.user._id
-    },
-    {
-        $push: {account:{
-            "name": req.body.accountName
-        }}
-    },
-    function(err, cb){
-        console.log(err);
-    });
-
-    
-    
     const cat = new categories({
         userID: req.user._id
     })
