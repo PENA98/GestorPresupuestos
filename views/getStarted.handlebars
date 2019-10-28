@@ -1,9 +1,49 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="/getStarted/text.css">
 
-<body>
-    
-</body>
+<div class="row">
+  <div id="Started">
+    Empieza a 
+    <div id="flip">
+      <div><div>CONTROLAR</div></div>
+      <div><div>AHORRAR</div></div>
+      <div><div>¡TRIUNFAR!</div></div>
+    </div>
+    ¡AHORA!
+    <div>
+      <h1></h1>
+    </div>
+  </div>
+</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<div class="row">
+
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+      <form action="/start" method="POST">
+          <div class="form-group">
+            <label for="accountName">Ingresa el nombre de tu primer cuenta</label>
+            <input type="text" autocomplete="off" required="required" class="form-control text-left" id="accountName" name="accountName" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+          </div>
+
+          <div class="form-group">
+            <label for="salary">Introduzca su salario</label>
+            <h5 class="text-aqua">Esto nos ayudara a brindarle consejos financieros.</h5>
+            <input type="number" autocomplete="off" required="required" class="form-control text-left" id="salary" name="salary" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Establezca un presupuesto mensual.</label>
+            <input type="number" autocomplete="off" required="required" class="form-control text-left" id="budget" name="budget" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': 'L ', 'placeholder': '0'">
+          </div>
+
+          <div id="bottonStart">    
+              <button type="submit" class="btn btn-block btn-success btn-lg">Comenzar</button>
+          </div>
+      </form>
+
+  </div>
+  <div class="col-lg-4"></div>
+
+</div>

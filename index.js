@@ -41,6 +41,8 @@ app.use((req, res, next) => {
 
 app.use(express.static(path.join(__dirname,"public")));
 
+
+
 app.use(cookieParser());
 
 app.use(
@@ -66,5 +68,7 @@ app.get('*', function(req, res, next){
 })
 
 app.use("/", router());
+
+
 
 app.listen(process.env.PORT);

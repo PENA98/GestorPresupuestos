@@ -48,3 +48,15 @@ exports.authenticateUser = function(req, res, next){
         failureFlash: true
     })(req, res, next);
 }
+
+exports.logOut = function(req, res){
+    req.logout();
+    req.flash("Cerraste sesión")
+    res.redirect("/login");
+}
+
+exports.profile = function(req, res){
+    res.render("profile",{
+        layout: "home.handlebars"
+    });
+}

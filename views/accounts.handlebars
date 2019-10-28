@@ -1,0 +1,85 @@
+<div class="row">
+    {{#accountMaker data}}
+    {{/accountMaker}}
+    
+    <div class="col-lg-4">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+            </div>
+            
+            <button id="modalActivator-button" hidden="hidden" data-toggle="modal" data-target="#addAccount"></button>
+                
+            <div class="box-body" style="cursor: pointer;" onclick="clickForModal()" >
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h6 class="text-center">
+                            <i class="fa fa-plus-square fa-5x"></i>
+                        </h6>
+                        
+                    </div>       
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="text-center">crear cuenta</h3>
+                    </div>                 
+                </div>
+                
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- MODAL -->
+
+      <!-- line modal -->
+      <div class="modal fade bd-example-modal-lg" id="addAccount" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo Ingreso</h3>
+          </div>
+          <div class="modal-body">
+            
+                  <!-- content goes here -->
+            <form action='/add_account/:{{actualURL}}' method="POST">         
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <label for="currency">Nombre de la cuenta</label>
+                        <input required="required" type="text" autocomplete="off"  class="form-control text-left" id="currency" name="Name" >
+                      </div>
+                      <!-- /input-group -->
+                    </div>
+        
+                <!-- /.input group -->
+              </div>
+
+              
+
+              <button type="submit" hidden="hidden" id="addAccount-button"></button>
+
+            </form>
+
+          </div>
+
+           <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+              <div class="btn-group" role="group">
+                <button data-dismiss="modal" type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+              </div>
+              <div class="btn-group" role="group">
+                <button  class="btn btn-block btn-success btn-lg" onclick="addAcount()" >Guardar</button>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+      </div>
+<!--/MODAL-->
