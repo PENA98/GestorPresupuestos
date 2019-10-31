@@ -17,26 +17,32 @@ exports.saveUser = async(req, res, next) => {
     const errors = validationResult(req);
     const errorsArray = [];
 
+    
+    console.log(errors);
+    
     //si hay errores
     if (!errors.isEmpty()) {
         errors.array().map(error => errorsArray.push(error.msg));
+        console.log(JSON.stringify(errorsArray));
         
         //enviar los errores al usuario
         req.flash("error", errorsArray);
-        console.log(errorsArray)
+        
+        
         res.render("register",{
-            messages: req.flash()
+            messages: req.flash(),
+            alt: JSON.stringify(errorsArray)
         });
+    }else{
+        //crear el usuario
+
+        const user = new User(req.body)
+
+        await user.save();
+
+        res.redirect("/login")
+
     }
-
-    //crear el usuario
-
-    const user = new User(req.body)
-
-    await user.save();
-
-    res.redirect("/login")
-
 }
 
 exports.authenticateUser = function(req, res, next){

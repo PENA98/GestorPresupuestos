@@ -1,4 +1,4 @@
-const Chart =  require('chart.js')
+const Chart =  require('chart.js');
 
 module.exports = {
     categoriesList: (e, options) => {

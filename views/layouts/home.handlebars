@@ -39,6 +39,9 @@
 
   <link rel="stylesheet" href="/date/date.css">
 
+  <link rel="stylesheet" href="/toastrJS/toastr.min.css">
+  
+
   
   <!--Importar Materialize CSS-->
   
@@ -275,6 +278,7 @@
 
     <!--FAB-->
     {{#if data}}
+    <%= toasts %>
     <div class="inner-fabs">
       <div class="fab round green" id="fab4" data-toggle="modal" data-target="#squarespaceModal" data-tooltip="Agregar ingreso"><i class="ion ion-arrow-graph-up-right"></i></div>
       <div class="fab round blue" id="fab3" data-toggle="modal" data-target="#modalExpense"data-tooltip="Agregar gasto"><i class="ion ion-arrow-graph-down-right"></i></div>
@@ -894,7 +898,9 @@
 <script src="/js/Chart.min.js"></script>
 <script src="/js/Chart.js"></script>
 <script src="/js/Chart.bundle.js"></script>
+<script src="/toastrJS/toastr.min.js"></script>
 <script src="/js/ChartStart.js"></script>
+<%= req.toastr.render() %>
 
 </body>
 </html>

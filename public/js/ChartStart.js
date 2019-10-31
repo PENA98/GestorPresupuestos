@@ -29,6 +29,8 @@ function incomeChart(e){
     
     console.log(labelz);
     console.log(numbers)
+
+
     
 
     let thisChart = document.getElementById("income");

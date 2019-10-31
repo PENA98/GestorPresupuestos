@@ -19,9 +19,10 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/login/css/main.css">
+	  <link rel="stylesheet" href="/toastrJS/toastr.min.css">
 <!--===============================================================================================-->
 </head>
-<body>
+<body onload="showToast(`{{alt}}`)">
 	
 	<div class="limiter">
 		<div class="container-login100">
@@ -34,6 +35,9 @@
 					
 					
 				</div>
+
+				
+				
 
 				<form action="/register" class="login100-form validate-form" method="POST">
 					<span class="login100-form-title">
@@ -118,6 +122,8 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="/login/js/main.js"></script>
+	<script src="/toastrJS/toastr.min.js"></script>
+	<script src="/js/toastrShow.js"></script>
 
 </body>
 </html>

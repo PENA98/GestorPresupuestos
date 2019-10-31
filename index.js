@@ -11,6 +11,7 @@ const MongoStore = require("connect-mongo")(session);
 const bodyParser = require("body-parser");
 const flash = require("connect-flash");
 const passport = require("passport");
+const toastr = require("toastr");
 
 
 // archivo para las variables de entorno
@@ -34,10 +35,7 @@ app.engine(
 app.set("view engine", "handlebars");
 app.use(flash());
 
-app.use((req, res, next) => {
-    res.locals.messages = flash.messages;
-    next();
-});
+
 
 app.use(express.static(path.join(__dirname,"public")));
 
@@ -54,6 +52,15 @@ app.use(
         store: new MongoStore({ mongooseConnection: mongoose.connection })
     })
 );
+
+
+app.use((req, res, next) => {
+    res.locals.messages = req.flash();
+    
+
+    next();
+});
+
 
 //passport config
 require("./config/passport")(passport)
