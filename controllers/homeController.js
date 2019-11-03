@@ -67,35 +67,53 @@ exports.showLanding = function(req, res){
 
 exports.Error = async(req, res) => {
 
-    const wall = await wallet.findOne({userID: req.user._id});
-    const cat = await categories.findOne({userID: req.user._id});
+    if(req.user){
+        
 
-    
-    let creditCard = false
-    let savingsS = false
+        const wall = await wallet.findOne({userID: req.user._id});
+        const cat = await categories.findOne({userID: req.user._id});
 
-    if(wall.creditCard.length > 0 ) {
-        creditCard = true
+        
+        let creditCard = false
+        let savingsS = false
+
+        if(wall.creditCard.length > 0 ) {
+            creditCard = true
+        }
+
+        if(wall.savings.length > 0 ) {
+            savingsS = true
+        }
+
+        res.render("404", {
+            layout: "home.handlebars",
+            tittle: "Wall-E",
+            incomes: wall.income,
+            cate: cat,
+            data: wall,
+            chartData: JSON.stringify(wall),
+            expenses: wall.expense,
+            Card: creditCard,
+            save: savingsS,
+            actualURL: "app_home",
+            message: 'ruta '+req.url+' no encontrada.' 
+        })
+    } else {
+
+        res.render("404", {
+            layout: "home.handlebars",
+            tittle: "Wall-E",
+            actualURL: "app_home",
+            message: 'ruta '+req.url+' no encontrada.' 
+        })
+
+
     }
 
-    if(wall.savings.length > 0 ) {
-        savingsS = true
-    }
+    
 
     
     
 
-    res.render("404", {
-        layout: "home.handlebars",
-        tittle: "Wall-E",
-        incomes: wall.income,
-        cate: cat,
-        data: wall,
-        chartData: JSON.stringify(wall),
-        expenses: wall.expense,
-        Card: creditCard,
-        save: savingsS,
-        actualURL: "app_home",
-        message: 'ruta '+req.url+' no encontrada.' 
-    })
+    
 }

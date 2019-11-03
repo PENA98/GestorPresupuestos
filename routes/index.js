@@ -97,6 +97,12 @@ module.exports = () => {
     //ruta para las transacciones (ver tablas)
     router.get("/transactions", dashboardController.showTable);
 
+    // ruta para mostrar la vista de reseteo de password
+    router.get("/reset_pass", userController.showRes)
+
+    //ruta para editar el perfil
+    router.post("/editProfile", userController.uploadImage, userController.editProfile)
+
     router.delete("/transactions/:id", walletController.eliminarIncome);
 
     router.get("*", homeController.Error);

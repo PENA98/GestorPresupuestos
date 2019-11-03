@@ -1,223 +1,221 @@
-
-
 <!-- Small boxes (Stat box) -->
-      <div class="row">
-        {{#if Card}}
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              {{#if incomes.length}}
-                {{#balance incomes expenses}}
-                {{/balance}}
+<div class="row">
+  {{#if Card}}
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        {{#if incomes.length}}
+        {{#balance incomes expenses}}
+        {{/balance}}
 
-              {{else}}
-              <h3>L 0</h3>
-
-              {{/if}}
-              
-
-              <p>Saldo actual</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-cash"></i>
-            </div>
-            <a href="/transactions" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              {{#if incomes.length}}
-                {{#incomeTotal incomes}}
-                {{/incomeTotal}}
-              {{else}}
-              <h3>L 0</h3>
-               
-              {{/if}}
-              <p>Ingresos</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-arrow-graph-up-right"></i>
-            </div>
-            <a href="/transactions" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              {{#if expenses.length}}
-                {{#expenseTotal expenses}}
-                {{/expenseTotal}}
-
-              {{else}}
-              <h3>L 0</h3>
-              {{/if}}
-
-              <p>Gastos</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-arrow-graph-down-right"></i>
-            </div>
-            <a href="/transactions" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              {{#cardTotal data}}
-              {{/cardTotal}}
-
-              <p>Tarjetas de credito</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-card"></i>
-            </div>
-            <a href="/cards" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
         {{else}}
-
-        <div class="col-lg-4 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              {{#if incomes.length}}
-                {{#balance incomes expenses}}
-                {{/balance}}
-
-              {{else}}
-              <h3>L 0</h3>
-              {{/if}}
-              
-
-              <p>Saldo actual</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-cash"></i>
-            </div>
-            <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              {{#if incomes.length}}
-                {{#incomeTotal incomes}}
-                {{/incomeTotal}}
-
-              {{else}}
-              <h3>L 0</h3>
-              {{/if}}
-              <p>Ingresos</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-arrow-graph-up-right"></i>
-            </div>
-            <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-4 col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              {{#if expenses.length}}
-                {{#expenseTotal expenses}}
-                {{/expenseTotal}}
-              {{else}}
-              <h3>L 0</h3>
-
-              {{/if}}
-
-              <p>Gastos</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-arrow-graph-down-right"></i>
-            </div>
-            <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        
+        <h3>L 0</h3>
 
         {{/if}}
-        <!-- ./col -->
+
+
+        <p>Saldo actual</p>
       </div>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="callout callout-info">
-                <h2><strong>Tu presupuesto para este mes</strong></h2>
-
-                <p>Verificalo constantemente para no exederte en los gastos.</p>
-
-                {{#budgetMaker data}}
-                {{/budgetMaker}}
-
-          </div>
-        </div>
+      <div class="icon">
+        <i class="ion ion-cash"></i>
       </div>
-      <!-- /.row -->
-      <div class="row">
-          <div class="col-md-6">
-              <div class="box box-danger">
-                <div class="box-header">
-                  <h3 class="box-title">Gastos</h3>
-                </div>
-                <div class="box-body">
-                 
-                  <canvas id="expenses" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
-                </div>
-                <!-- /.box-body -->
-              </div>
-          </div>
+      <a href="/transactions" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-green">
+      <div class="inner">
+        {{#if incomes.length}}
+        {{#incomeTotal incomes}}
+        {{/incomeTotal}}
+        {{else}}
+        <h3>L 0</h3>
 
-          <div class="col-md-6 ">
-            <div class="box box-success" >
-              <div class="box-header with-border">
-                <h3 class="box-title">Ingresos</h3>  
-              </div>
-              <div class="box-body">
-                <canvas id="income" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
-              </div>
-              <!-- /.box-body -->
-            </div>
-          </div>
-          <div class="col-md-6 ">
-            <div class="box box-success" >
-              <div class="box-header with-border">
-                <h3 class="box-title">gastos por categorias</h3>  
-              </div>
-              <div class="box-body">
-                <canvas id="categories" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
-              </div>
-              <!-- /.box-body -->
-            </div>
-          </div>
-
-          <div class="col-md-6 ">
-            <div class="box box-success" >
-              <div class="box-header with-border">
-                <h3 class="box-title">Consejos</h3>  
-              </div>
-              <div class="box-body">
-                <h2>Recuerda, hoy es el mañana acerca del cual te preocupabas ayer. <em>-Dale Carnegie</em></h2>
-                <canvas id="wellDone" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
-                <h1></h1>
-              </div>
-              <!-- /.box-body -->
-              
-            </div>
-          </div>
-          
+        {{/if}}
+        <p>Ingresos</p>
       </div>
+      <div class="icon">
+        <i class="ion ion-arrow-graph-up-right"></i>
+      </div>
+      <a href="/transactions" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        {{#if expenses.length}}
+        {{#expenseTotal expenses}}
+        {{/expenseTotal}}
+
+        {{else}}
+        <h3>L 0</h3>
+        {{/if}}
+
+        <p>Gastos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-arrow-graph-down-right"></i>
+      </div>
+      <a href="/transactions" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-red">
+      <div class="inner">
+        {{#cardTotal data}}
+        {{/cardTotal}}
+
+        <p>Tarjetas de credito</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-card"></i>
+      </div>
+      <a href="/cards" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  {{else}}
+
+  <div class="col-lg-4 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        {{#if incomes.length}}
+        {{#balance incomes expenses}}
+        {{/balance}}
+
+        {{else}}
+        <h3>L 0</h3>
+        {{/if}}
+
+
+        <p>Saldo actual</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-cash"></i>
+      </div>
+      <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-4 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-green">
+      <div class="inner">
+        {{#if incomes.length}}
+        {{#incomeTotal incomes}}
+        {{/incomeTotal}}
+
+        {{else}}
+        <h3>L 0</h3>
+        {{/if}}
+        <p>Ingresos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-arrow-graph-up-right"></i>
+      </div>
+      <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+  <div class="col-lg-4 col-xs-12">
+    <!-- small box -->
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        {{#if expenses.length}}
+        {{#expenseTotal expenses}}
+        {{/expenseTotal}}
+        {{else}}
+        <h3>L 0</h3>
+
+        {{/if}}
+
+        <p>Gastos</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-arrow-graph-down-right"></i>
+      </div>
+      <a href="#" class="small-box-footer">Mas informacion <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
+  <!-- ./col -->
+
+
+  {{/if}}
+  <!-- ./col -->
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="callout callout-info">
+      <h2><strong>Tu presupuesto para este mes</strong></h2>
+
+      <p>Verificalo constantemente para no exederte en los gastos.</p>
+
+      {{#budgetMaker data}}
+      {{/budgetMaker}}
+
+    </div>
+  </div>
+</div>
+<!-- /.row -->
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-danger">
+      <div class="box-header">
+        <h3 class="box-title">Gastos</h3>
+      </div>
+      <div class="box-body">
+
+        <canvas id="expenses" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+
+  <div class="col-md-6 ">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">Ingresos</h3>
+      </div>
+      <div class="box-body">
+        <canvas id="income" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+  <div class="col-md-6 ">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">gastos por categorias</h3>
+      </div>
+      <div class="box-body">
+        <canvas id="categories" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
+      </div>
+      <!-- /.box-body -->
+    </div>
+  </div>
+
+  <div class="col-md-6 ">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">Consejos</h3>
+      </div>
+      <div class="box-body">
+        <h2>Recuerda, hoy es el mañana acerca del cual te preocupabas ayer. <em>-Dale Carnegie</em></h2>
+        <canvas id="wellDone" style="height: 227px; width: 455px;" height="227" width="455"></canvas>
+        <h1></h1>
+      </div>
+      <!-- /.box-body -->
+
+    </div>
+  </div>
+
+</div>

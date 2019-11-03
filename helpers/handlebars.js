@@ -33,7 +33,6 @@ module.exports = {
                     </tr>`
         });
 
-        console.log(e);
         
         e.category.forEach(list => {
             counter += 1
@@ -79,7 +78,6 @@ module.exports = {
             html +=`<option>${category}</option>`
         });
 
-        console.log(e);
         
         e.category.forEach(list => {
             html +=`<option>${list.name}</option>`
@@ -208,7 +206,6 @@ module.exports = {
         let html = "";
         let counter = 0;
         e.income.reverse().forEach(inc =>{
-            console.log(inc.date);
             counter += 1;
             html += `
                     <tr>
@@ -313,6 +310,53 @@ module.exports = {
     
 
         return (options.fn().html = html);
+
+    },
+    showMessages: (errors = {}, alerts) => {
+        let cate = Object.keys(errors);
+
+
+        console.log(cate);
+
+        
+        let html = "";
+        console.log(errors);
+
+            if (cate.length) {
+                console.log(errors);
+                
+                errors[cate].forEach(mess => {
+
+                    if (cate == "Hecho") {
+
+                        html +=`<div id="toast-container" class="toast-top-right">
+                            <div class="toast toast-success" aria-live="assertive">
+                            <div class="toast-title">${cate}
+
+                            </div>
+                            <div class="toast-message">${mess}
+                            </div>
+                            </div>
+                            </div>`
+                        
+                    } else if (cate == "error") {
+                        html +=`<div id="toast-container" class="toast-top-right">
+                            <div class="toast toast-error" aria-live="assertive">
+                            <div class="toast-title">${cate}
+
+                            </div>
+                            <div class="toast-message">${mess}
+                            </div>
+                            </div>
+                            </div>`
+                    }
+                    
+                })
+            }
+        
+        console.log(html);
+        
+        return (alerts.fn().html = html);
 
     },
     cardMaker: (e, options) => {

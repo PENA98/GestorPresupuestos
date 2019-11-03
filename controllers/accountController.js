@@ -19,7 +19,6 @@ exports.showAccounts = async(req, res) => {
         savingsS = true
     }
 
-    console.log(wall);
     
 
     res.render("accounts",{

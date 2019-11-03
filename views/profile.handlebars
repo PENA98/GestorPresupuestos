@@ -1,112 +1,118 @@
 <div class="row">
-        <div class="col-md-3">
+  <!-- /.col -->
+  <div class="col-lg-12">
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
 
-          <!-- Profile Image -->
-          <div class="box box-primary">
-            <div class="box-body box-profile">
+        <li><a href="#settings" data-toggle="tab">Configuración</a></li>
+      </ul>
+      <div class="tab-content">
+
+
+        <div class="active tab-pane" id="settings">
+          <form action="/editProfile" class="form-horizontal" method="POST" enctype="multipart/form-data">
+
+
+            <div class="box box-primary">
+              <div class="box-body box-profile">
                 <br>
-              <img class="profile-user-img img-responsive img-circle" src="/templates/dist/img/user4-128x128.jpg" alt="User profile picture">
+                <img class="profile-user-img img-responsive img-circle" src="/uploads/profiles/{{user.image}}"
+                  alt="User profile picture">
 
-              <h3 class="profile-username text-center">{{user.name}}</h3>
+                <h3 class="profile-username text-center">{{user.name}}</h3>
 
-              <br>
-              <br>
-
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Ingresos</b> <a class="pull-right">1,322</a>
-                </li>
                 <br>
-                <li class="list-group-item">
-                  <b>Gastos</b> <a class="pull-right">543</a>
-                </li>
                 <br>
-                <li class="list-group-item">
-                  <b>Tarjetas</b> <a class="pull-right">13,287</a>
-                </li>
-                <br>
-              </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Subir foto</b></a>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-9">
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                
-                <li><a href="#settings" data-toggle="tab">Configuración</a></li>
-            </ul>
-            <div class="tab-content">
-              
+                <div class="form-group">
+                  <label for="inputName" class="col-sm-4 control-label">Subir foto</label>
 
-              <div class="active tab-pane" id="settings">
-                <form class="form-horizontal">
-                    <div>
-                      <h3>
-                          Informacion general
-                      </h3>
-                    </div>
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
-
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
-                    </div>
+                  <div class="col-sm-8">
+                    <input type="file" class="btn btn-primary" id="inputName" placeholder="image" name="image">
                   </div>
-                  <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Correo</label>
+                </div>
 
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                    </div>
-                  </div>
-                  <div>
-                      <h3>
-                          Cambio de contraseña
-                      </h3>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputSkills" class="col-sm-2 control-label">Contraseña actual</label>
+                <ul class="list-group list-group-unbordered">
+                  <li class="list-group-item">
+                    <b>Ingresos</b> <a class="pull-right">1,322</a>
+                  </li>
+                  <br>
+                  <li class="list-group-item">
+                    <b>Gastos</b> <a class="pull-right">543</a>
+                  </li>
+                  <br>
+                  <li class="list-group-item">
+                    <b>Tarjetas</b> <a class="pull-right">13,287</a>
+                  </li>
+                  <br>
+                </ul>
 
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="password" placeholder="******">
-                    </div>
-                  </div>
 
-                  <div class="form-group">
-                    <label for="inputSkills" class="col-sm-2 control-label">Nueva contraseña</label>
-
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="password" placeholder="*****">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="inputSkills" class="col-sm-2 control-label">repite la contraseña</label>
-
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="password" placeholder="*****">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                  </div>
-                </form>
               </div>
-              <!-- /.tab-pane -->
+              <!-- /.box-body -->
             </div>
-            <!-- /.tab-content -->
-          </div>
-          <!-- /.nav-tabs-custom -->
+
+            <div>
+              <h3>
+                Informacion general
+              </h3>
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-sm-2 control-label">Nombre</label>
+
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" value="{{user.name}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail" class="col-sm-2 control-label">Correo</label>
+
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail" placeholder="Correo electronico" name="email" value="{{user.email}}">
+              </div>
+            </div>
+            <div>
+              <h3>
+                Cambio de contraseña
+              </h3>
+            </div>
+            <div class="form-group">
+              <label for="inputSkills" class="col-sm-2 control-label">Contraseña actual</label>
+
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" placeholder="******" name="password">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputSkills" class="col-sm-2 control-label">Nueva contraseña</label>
+
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="new_password" placeholder="*****" name="new_password">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputSkills" class="col-sm-2 control-label">repite la contraseña</label>
+
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="new_password_confirm" placeholder="*****" name="new_password_confirm">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger">Guardar</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <!-- /.col -->
+        <!-- /.tab-pane -->
       </div>
-      <!-- /.row -->
+      <!-- /.tab-content -->
+    </div>
+    <!-- /.nav-tabs-custom -->
+  </div>
+  <!-- /.col -->
+</div>
+<!-- /.row -->

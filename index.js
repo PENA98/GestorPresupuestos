@@ -54,14 +54,6 @@ app.use(
 );
 
 
-app.use((req, res, next) => {
-    res.locals.messages = req.flash();
-    
-
-    next();
-});
-
-
 //passport config
 require("./config/passport")(passport)
 // passport middleware
@@ -70,9 +62,19 @@ app.use(passport.session());
 
 app.get('*', function(req, res, next){
     res.locals.user = req.user || null;
-    console.log(req.user)
     next();
 })
+
+app.use((req, res, next) => {
+    res.locals.messages = req.flash();
+    
+
+    next();
+});
+
+
+
+
 
 app.use("/", router());
 
