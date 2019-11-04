@@ -8,6 +8,7 @@ const wallet = mongoose.model("wallet");
 const categories = mongoose.model("category");
 const bcrypt = require("bcrypt")
 const crypto = require("crypto");
+const enviarEmail = require("../handlers/email");
 
 exports.showLogin = function(req, res){
     res.render("login");
@@ -205,7 +206,7 @@ const configuracionMulter = {
       res.render("resetPassword")
   }
   
-  exports.enviarToken = async (req, res) => {
+  exports.sendToken = async (req, res) => {
     // Verificar si el correo electrónico es válido
     const user = await User.findOne({ email: req.body.email });
   
@@ -216,7 +217,7 @@ const configuracionMulter = {
     }
   
     // El usuario existe, generar el token
-    usuaruserio.token = crypto.randomBytes(20).toString("hex");
+    user.token = crypto.randomBytes(20).toString("hex");
     user.expira = Date.now() + 3600000;
   
     // Guardar el usuario

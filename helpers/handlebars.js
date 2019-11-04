@@ -144,11 +144,12 @@ module.exports = {
                     <td>${inc.category}</td>
                     <td>${inc.account}</td>
                     <td class="text-green">L ${inc.amount}</td>
+                    <td style="display:none;">${inc._id}</td>
                     <td>
-                        <a href="/edit/:${inc._id}"><i class="fa fa-edit"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></a>
                     </td>
                     <td>
-                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                        <a href="#" ><i class="fa fa-trash-o"></i></a>
                     </td>
                     </tr>
                     `
@@ -164,8 +165,9 @@ module.exports = {
                     <td>${exp.category}</td>
                     <td>${exp.account}</td>
                     <td class="text-red">L ${exp.amount}</td>
+                    <td style="display:none;">${exp._id}</td>
                     <td>
-                        <a href="/edit/:${exp._id}"><i class="fa fa-edit"></i></a>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Edit</button>
                     </td>
                     <td>
                         <a href="#"><i class="fa fa-trash-o"></i></a>

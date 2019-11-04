@@ -2,13 +2,11 @@
 function incomeChart(e){
     const obj = JSON.parse(e)
     
-    console.log(obj.income);
 
     let labelz = [];
     let numbers = [];
     
     obj.income.forEach(inc => {
-        console.log(inc.account);
         if (!labelz.includes(inc.account)) {
             labelz.push(inc.account);
         }
@@ -18,7 +16,6 @@ function incomeChart(e){
         let sum = 0;
         obj.income.forEach(inc => {
             if (lab == inc.account) {
-                console.log(inc.amount);
                 sum += Number(inc.amount);
             }
         });
@@ -26,9 +23,7 @@ function incomeChart(e){
     })
 
 
-    
-    console.log(labelz);
-    console.log(numbers)
+
 
 
     
@@ -85,7 +80,7 @@ function incomeChart(e){
     let numbers2 = [];
     
     obj.expense.forEach(inc => {
-        console.log(inc.account);
+        
         if (!labelz2.includes(inc.account)) {
             labelz2.push(inc.account);
         }
@@ -95,7 +90,7 @@ function incomeChart(e){
         let sum = 0;
         obj.expense.forEach(inc => {
             if (lab == inc.account) {
-                console.log(inc.amount);
+                
                 sum += Number(inc.amount);
             }
         });
@@ -104,8 +99,7 @@ function incomeChart(e){
 
 
     
-    console.log(labelz2);
-    console.log(numbers2)
+  
     
 
     let thisChart2 = document.getElementById("expenses");
@@ -160,7 +154,7 @@ function incomeChart(e){
     let numbers3 = [];
     
     obj.expense.forEach(inc => {
-        console.log(inc.category);
+        
         if (!labelz3.includes(inc.category)) {
             labelz3.push(inc.category);
         }
@@ -170,7 +164,7 @@ function incomeChart(e){
         let sum = 0;
         obj.expense.forEach(inc => {
             if (lab == inc.category) {
-                console.log(inc.amount);
+                
                 sum += Number(inc.amount);
             }
         });
@@ -179,8 +173,7 @@ function incomeChart(e){
 
 
     
-    console.log(labelz3);
-    console.log(numbers3)
+
     
 
     let thisChart3 = document.getElementById("categories");
@@ -228,7 +221,7 @@ function incomeChart(e){
         }
     });
 
-    console.log(lineChart3);
+
 
 
 

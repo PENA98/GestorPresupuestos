@@ -100,6 +100,9 @@ module.exports = () => {
     // ruta para mostrar la vista de reseteo de password
     router.get("/reset_pass", userController.showRes)
 
+    // ruta para enviar el token al usuario
+    router.post("/reset_password", userController.sendToken)
+
     //ruta para editar el perfil
     router.post("/editProfile", userController.uploadImage, userController.editProfile)
 
