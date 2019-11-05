@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-	<title>Login V1</title>
+	<title>Inicia sesión</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/login/images/icons/favicon.ico" />
+	<link rel="icon" type="image/png" href="/img/Wall-E.png" />
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -20,6 +20,7 @@
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/login/css/main.css">
+	<link rel="stylesheet" href="/toastrJS/toastr.min.css">
 	<!--===============================================================================================-->
 </head>
 
@@ -32,7 +33,7 @@
 
 				<form action="/login" class="login100-form validate-form" method="POST">
 					<span class="login100-form-title">
-						Registrate
+						Inicia sesión
 					</span>
 
 					<div class="wrap-input100 validate-input"
@@ -81,7 +82,10 @@
 	</div>
 
 
-
+	{{#if messages}}
+	{{#showMessages messages}}
+	{{/showMessages}}
+	{{/if}}
 
 	<!--===============================================================================================-->
 	<script src="/login/vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -99,6 +103,8 @@
 	</script>
 	<!--===============================================================================================-->
 	<script src="/login/js/main.js"></script>
+	<script src="/toastrJS/toastr.min.js"></script>
+	<script src="/js/toastrShow.js"></script>
 
 </body>
 

@@ -22,7 +22,7 @@ exports.addExpense = async(req, res) => {
     }
     )
 
-
+    req.flash("Hecho",["Gasto agregado correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
     
 }
@@ -42,8 +42,6 @@ exports.start = async(req, res) => {
     });
 
     
-    console.log(wall);
-    
     await wall.save(function(err, cb){
         console.log(err);
         
@@ -58,7 +56,7 @@ exports.start = async(req, res) => {
         
     })
 
-
+    req.flash("Hecho",["Has iniciado a usar Wall-E."])
     res.redirect("/app_home");
 
     //guardar en la base de datos
@@ -81,7 +79,7 @@ exports.addIncome = async(req, res) => {
         
     }
     );
-
+    req.flash("Hecho",["Ingreso agregado correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
   
 }
@@ -104,7 +102,7 @@ exports.cardCreator = async(req, res) => {
     }
     )
 
-    
+    req.flash("Hecho",["Tarjeta creada correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
     
 }
@@ -126,7 +124,7 @@ exports.saveCreator = async(req, res) => {
     }
     )
 
-    
+    req.flash("Hecho",["Ahorro creado correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
     
 }
@@ -135,39 +133,31 @@ exports.saveAdder = async(req, res) => {
 
     
     const sav = await wallet.findOne({
+        userID: req.user._id,
         'savings.name': req.body.saveName
     },
     function(err, cb){
-        if (cb == null) {
-            console.log("Que ondas");
-            
-        }
         console.log(err);
-
-           
+     
     }).catch(function(err,cb){
-        console.log(err);
-        
+        console.log(err);    
     });;
-    console.log(sav);
     
     let realIndex = 0;
     sav.savings.forEach(function(a, index){
         if (a.name == req.body.saveName) {
             realIndex = index
-            console.log("Funciona");
             
         }
-        console.log(a);
-        console.log(index);
-        
-        
+    })
+    let sum
+    await new Promise((resolve, reject) => {
+        sum = Number(Number(sav.savings[realIndex].amount) + Number(req.body.amount))
+        resolve(true)
     })
     
-    const sum = Number(Number(sav.savings[realIndex].amount) + Number(req.body.amount))
-
     
-    wallet.updateOne({
+    await wallet.updateOne({
         userID: req.user._id, "savings._id": sav.savings[realIndex]._id
     },
     {
@@ -177,7 +167,7 @@ exports.saveAdder = async(req, res) => {
         
     }
     )
-
+    req.flash("Hecho",["Ahorro agregado correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
 
 }
@@ -185,6 +175,7 @@ exports.saveAdder = async(req, res) => {
 exports.cardAdder = async(req, res) => {
 
     let car = await wallet.findOne({
+        userID: req.user._id,
         'creditCard.name': req.body.cardName
     },
     function(err, cb){
@@ -196,12 +187,9 @@ exports.cardAdder = async(req, res) => {
     car.creditCard.forEach(function(a, index){
         if (a.name == req.body.cardName) {
             realIndex = index
-            console.log("AHUEVOOOOOOOOOOOO");
             
         }
-        console.log(a);
-        console.log(index);
-        
+
         
     });
 
@@ -217,7 +205,7 @@ exports.cardAdder = async(req, res) => {
         
     }
     )
-
+    req.flash("Hecho",["Gasto de tarjeta agregado correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
 }
 
@@ -231,8 +219,6 @@ exports.editExpense = async(req, res) => {
             ind = index
         }
     })
-
-    console.log(wall.expense[ind]);
 
 
     res.render("transactions",{
@@ -309,7 +295,73 @@ exports.showCards = async(req, res) => {
     })
 }
 
-exports.eliminarIncome = async(req, res) => {
-    console.log("ads");
+exports.editData = async (req, res) => {
+
     
+    if (req.params.cat == "income") {
+        
+        wallet.updateOne({
+            userID: req.user._id, "income._id": req.params.id
+        },
+        {
+            $set:{
+                "income.$.amount": req.body.Valor5.substr(2),
+                "income.$.comment": req.body.Descripcion2
+            }
+        },function(err, cb) {
+            console.log(err);
+            
+        }
+        )
+        
+    } else if(req.params.cat == "expense"){
+        wallet.updateOne({
+            userID: req.user._id, "expense._id": req.params.id
+        },
+        {
+            $set:{
+                "expense.$.amount": req.body.Valor5.substr(2),
+                "expense.$.comment": req.body.Descripcion2
+            }
+        },function(err, cb) {
+            console.log(err);
+            
+        }
+        )
+    }
+
+    res.redirect("/transactions")
+}
+
+exports.deleteData = async(req, res) => {
+
+
+
+    if (req.params.cat == "income") {
+            
+            wallet.updateOne({
+                userID: req.user._id
+            },
+            {
+                $pull: {"income":{_id: req.params.id}}
+            },function(err, cb) {
+                console.log(err);
+                
+            }
+            )
+            
+        } else if(req.params.cat == "expense"){
+            wallet.updateOne({
+                userID: req.user._id
+            },
+            {
+                $pull: {"expense": {_id: req.params.id}}
+            },function(err, cb) {
+                console.log(err);
+                
+            }
+            )
+        }
+        req.flash("Hecho",["Eliminado correntamente."])
+        res.redirect("/transactions")
 }

@@ -50,6 +50,6 @@ exports.addAccount = async(req, res) => {
     }
     )
 
-    
+    req.flash("Hecho",["Cuenta creada correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
 }

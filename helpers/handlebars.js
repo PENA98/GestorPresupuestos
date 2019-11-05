@@ -146,10 +146,10 @@ module.exports = {
                     <td class="text-green">L ${inc.amount}</td>
                     <td style="display:none;">${inc._id}</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></a>
+                        <a id="${inc._id}" class="inc edt" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i></a>
                     </td>
                     <td>
-                        <a href="#" ><i class="fa fa-trash-o"></i></a>
+                        <a href="/delete/income/${inc._id}" ><i class="fa fa-trash-o"></i></a>
                     </td>
                     </tr>
                     `
@@ -167,10 +167,10 @@ module.exports = {
                     <td class="text-red">L ${exp.amount}</td>
                     <td style="display:none;">${exp._id}</td>
                     <td>
-                    <button class="btn btn-success" data-toggle="modal" data-target="#myModal">Edit</button>
+                        <a id="${exp._id}" class="exp edt" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i></a>
                     </td>
                     <td>
-                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                        <a href="/delete/expense/${exp._id}"><i class="fa fa-trash-o"></i></a>
                     </td>
                     </tr>
                     `
@@ -193,10 +193,10 @@ module.exports = {
                     <td>${exp.account}</td>
                     <td class="text-red">L ${exp.amount}</td>
                     <td>
-                        <a href="/edit/:${exp._id}"><i class="fa fa-edit"></i></a>
+                        <a id="${exp._id}" class="exp edt" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i></a>
                     </td>
                     <td>
-                        <a href="#"><i class="fa fa-trash-o"></i></a>
+                        <a href="/delete/expense/${exp._id}"><i class="fa fa-trash-o"></i></a>
                     </td>
                     </tr>
                     `
@@ -218,10 +218,10 @@ module.exports = {
                     <td>${inc.account}</td>
                     <td class="text-green"> L ${inc.amount}</td>
                     <td>
-                        <a href="/edit/:${inc._id}" ><i class="fa fa-edit"></i></a>
+                        <a id="${inc._id}" class="inc edt" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i></a>
                     </td>
                     <td>
-                        <a href="#" data-eliminar="${inc._id}"><i class="fa fa-trash-o"></i></a>
+                    <a href="/delete/income/${inc._id}" ><i class="fa fa-trash-o"></i></a>
                     </td>
                     </tr>
                     `
@@ -314,18 +314,73 @@ module.exports = {
         return (options.fn().html = html);
 
     },
+    miniSaveMaker: (e, options) => {
+
+
+        let html = "";
+        let html2 = "";
+        let count = 0
+
+        e.savings.forEach(sv =>{
+            let percentage = 0;
+            count += 1
+            percentage = Math.round((sv.amount/sv.goal)*100)
+
+            html +=`<li>
+                    <!-- Task item -->
+                    <a href="/savings">
+                    <h3>
+                        ${sv.name}
+                        <small class="pull-right">${percentage}%</small>
+                    </h3>
+                    <div class="progress xs">
+                        <div class="progress-bar progress-bar-aqua" style="width: ${percentage}%" role="progressbar"
+                        aria-valuenow="${percentage}" aria-valuemin="0" aria-valuemax="100">
+                        <span class="sr-only">${percentage}% Complete</span>
+                        </div>
+                    </div>
+                    </a>
+                </li>`
+        })
+        
+
+        html2 += `<li class="dropdown tasks-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-flag-o"></i>
+                <span class="label label-danger">${count}</span>
+                </a>
+                <ul class="dropdown-menu">
+                <li class="header">Tus ahorros</li>
+                <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                    ${html}
+                    </ul>
+                </li>
+                <li class="footer">
+                    <a href="/savings">Ver todos los ahorros</a>
+                </li>
+                </ul>
+            </li>`
+        
+       /*
+       
+       
+
+       */
+        
+    
+
+        return (options.fn().html = html2);
+
+    },
     showMessages: (errors = {}, alerts) => {
         let cate = Object.keys(errors);
-
-
-        console.log(cate);
-
         
         let html = "";
-        console.log(errors);
 
             if (cate.length) {
-                console.log(errors);
+
                 
                 errors[cate].forEach(mess => {
 
@@ -356,7 +411,6 @@ module.exports = {
                 })
             }
         
-        console.log(html);
         
         return (alerts.fn().html = html);
 

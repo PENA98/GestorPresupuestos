@@ -73,6 +73,12 @@ module.exports = () => {
     // ruta start
     router.post("/start", walletController.start)
 
+    //ruta para editar datos de la tabla
+    router.post("/edit/:cat/:id", walletController.editData)
+
+    //ruta para eliminar datos de la tabla
+    router.get("/delete/:cat/:id", walletController.deleteData)
+
     // ruta para las categorias
     router.get("/categories", categoriesController.showCategories)
 
@@ -103,10 +109,12 @@ module.exports = () => {
     // ruta para enviar el token al usuario
     router.post("/reset_password", userController.sendToken)
 
+    router.get("/resetPassword/:token", userController.showResetPass)
+
+    router.post("/resetPassword/:token", userController.changePassword)
+
     //ruta para editar el perfil
     router.post("/editProfile", userController.uploadImage, userController.editProfile)
-
-    router.delete("/transactions/:id", walletController.eliminarIncome);
 
     router.get("*", homeController.Error);
     return router;

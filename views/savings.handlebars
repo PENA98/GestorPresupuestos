@@ -4,5 +4,93 @@
    {{#saveMaker data}}
    {{/saveMaker}}
 
+   <div class="col-lg-4">
+      <div class="box box-danger">
+         <div class="box-header with-border">
+         </div>
+
+         <button id="modalActivator-button" hidden="hidden" data-toggle="modal" data-target="#addSaving"></button>
+
+         <div class="box-body" style="cursor: pointer;" onclick="clickForModal()">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12">
+                  <h6 class="text-center">
+                     <i class="fa fa-plus-square fa-5x"></i>
+                  </h6>
+
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-lg-12">
+                  <h3 class="text-center">crear ahorro</h3>
+               </div>
+            </div>
+
+         </div>
+
+
+      </div>
+   </div>
+
 
 </div>
+
+
+<!-- MODAL -->
+
+<!-- line modal -->
+<div class="modal fade bd-example-modal-lg" id="addSaving" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                  class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="lineModalLabel">Nuevo ahorro</h3>
+         </div>
+         <div class="modal-body">
+
+            <!-- content goes here -->
+            <form action='/add_saving/:{{actualURL}}' method="POST">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="form-group">
+                        <label for="savename">Nombre</label>
+                        <input type="text" autocomplete="off" placeholder="nombre del ahorro"
+                           class="form-control text-left" id="savemane" name="saveName">
+                     </div>
+                     <!-- /input-group -->
+                  </div>
+                  <!-- /.col-lg-6 -->
+                  <div class="col-lg-6">
+                     <div class="form-group">
+                        <label>Meta de ahorro</label>
+                        <input type="Number" autocomplete="off" name="goal" class="form-control"
+                           placeholder="Ingrese su meta de ahorro">
+                     </div>
+                  </div>
+                  <!-- /.input group -->
+               </div>
+
+
+               <button type="submit" hidden="hidden" id="addSavingS-button"></button>
+
+            </form>
+
+         </div>
+
+         <div class="modal-footer">
+            <div class="btn-group btn-group-justified" role="group" aria-label="group button">
+               <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-block btn-danger btn-lg">Cerrar</button>
+               </div>
+               <div class="btn-group" role="group">
+                  <button class="btn btn-block btn-success btn-lg" onclick="addSavingS()">Guardar</button>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</div>
+<!--/MODAL-->

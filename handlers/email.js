@@ -34,7 +34,9 @@ exports.enviar = async opciones => {
     subject: opciones.subject,
     template: opciones.template,
     context: {
-      resetUrl: opciones.resetUrl
+      resetUrl: opciones.resetUrl,
+      name: opciones.user.name
+
     }
   };
 

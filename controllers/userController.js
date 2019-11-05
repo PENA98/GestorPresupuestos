@@ -174,7 +174,7 @@ exports.uploadImage = (req, res, next) => {
 const configuracionMulter = {
     // Tamaño máximo del archivo en bytes
     limits: {
-      fileSize: 2000000
+      fileSize: 200000
     },
     // Dónde se almacena la imagen
     storage: (fileStorage = multer.diskStorage({
@@ -213,30 +213,92 @@ const configuracionMulter = {
     // Si el usuario no existe
     if (!user) {
       req.flash("error", ["El correo electrónico ingresado no existe"]);
-      return res.redirect("/reestablecerPassword");
+      return res.redirect("/reset_pass");
     }
   
     // El usuario existe, generar el token
     user.token = crypto.randomBytes(20).toString("hex");
-    user.expira = Date.now() + 3600000;
+    user.expires = Date.now() + 3600000;
   
     // Guardar el usuario
     await user.save();
   
     // Generar la URL
-    const resetUrl = `http://${req.headers.host}/reestablecerPassword/${user.token}`;
+    const resetUrl = `http://${req.headers.host}/resetPassword/${user.token}`;
   
     // Enviar la notificación por email
     await enviarEmail.enviar({
         user,
       subject: "Reestablecer tu contraseña",
       template: "resetPassword",
-      resetUrl
+      resetUrl,
+      
     });
   
     // Redireccionar
     req.flash("correcto", [
       "Verifica tu correo electrónico para seguir las instrucciones"
     ]);
-    res.redirect("/iniciarSesion");
+    res.redirect("/login");
+  };
+
+  exports.showResetPass = async (req, res) => {
+    // buscar el usuario por medio del token y la fecha de expiración
+    const user = await User.findOne({
+      token: req.params.token,
+      expires: { $gt: Date.now() }
+    });
+  
+    // No se pudo encontrar el usuario con el token o token vencido
+    if (!user) {
+      req.flash("error", [
+        "Solicitud expirada. Vuelve a solicitar el cambio de contraseña"
+      ]);
+      return res.redirect("/resset_pass");
+    }
+  
+    // Mostrar el formulario de nueva password
+    res.render("newPassword");
+  };
+  
+
+  exports.changePassword = async (req, res) => {
+    // buscar el usuario por medio del token y la fecha de expiración
+    const user = await User.findOne({
+      token: req.params.token,
+      expires: { $gt: Date.now() }
+    });
+  
+    // No se pudo encontrar el usuario con el token o token vencido
+    if (!user) {
+      req.flash("error", [
+        "Solicitud expirada. Vuelve a solicitar el cambio de contraseña"
+      ]);
+      return res.redirect("/reset_pass");
+    }
+  
+    // Obtener el nuevo password
+
+    await new Promise((resolve, reject) => {
+      if(req.body.password == req.body.confirm_password){
+        user.password = req.body.password;
+        resolve(true)
+      } else {
+        req.flash("error", ["las contraseñas no son iguales."])
+        return res.redirect("/resetPassword/" + req.params.token);
+      }
+    });
+    
+    
+
+    // Limpiar los valores que ya no son requeridos
+    user.token = undefined;
+    user.expira = undefined;
+  
+    // Almacenar los valores en la base de datos
+    await user.save();
+  
+    // Redireccionar
+    req.flash("Hecho", ["Contraseña modificada correctamente"]);
+    res.redirect("/login");
   };

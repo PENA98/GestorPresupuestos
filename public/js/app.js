@@ -29,6 +29,12 @@ function clickForModal(){
 }
 
 
+
 function addAcount(){
     document.getElementById("addAccount-button").click() // Click on the button
 }
+
+    $(".actswt li").on("click", function() {
+      $(".actswt li").removeClass("active");
+      $(this).addClass("active");
+    });

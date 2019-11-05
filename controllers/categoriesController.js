@@ -48,6 +48,6 @@ exports.saveCategory = async(req, res) => {
             
         }
         )
-    
+    req.flash("Hecho", ["Categoria creada correctamente."])
     res.redirect(req.params.url.replace(":", "/"));
 }
