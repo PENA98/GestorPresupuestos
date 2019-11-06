@@ -3,20 +3,20 @@ var Action = "";
 $(".inc").click(function(){
     Action = ""
     Action += "/edit/income/" + this.id
-    console.log(Action)
+
 })
 
 $(".exp").click(function(){
     Action = ""
     Action += "/edit/expense/" + this.id
-    console.log(Action)
+
 })
 
 $(".edt[data-target='#myModal']").click(function() {
     var columnHeadings = $("thead.inEx th").map(function() {
               return $(this).text();
            }).get();
-    console.log(columnHeadings);
+ 
 
 
     

@@ -45,7 +45,6 @@ exports.addAccount = async(req, res) => {
             
         }}
     },function(err, cb) {
-        console.log(err);
         
     }
     )

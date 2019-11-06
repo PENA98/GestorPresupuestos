@@ -6,11 +6,11 @@ const bcrypt = require("bcrypt");
 module.exports = function(passport){
     //Local Strategy
     passport.use(new localStrategy(function(username, password, done){
-        console.log("soy la configuracion de passport")
+        
         let query = { email:username }
         //verificar email
         user.findOne(query, function(err, user){
-            console.log(user)
+            
             if (err) throw err;
             if (!user) {
                 return done(null, false, {message: "No se econtro el usuario"});
@@ -19,11 +19,9 @@ module.exports = function(passport){
             bcrypt.compare(password, user.password, function(err, isMatch){
                 if (err) throw err;
 
-                if (isMatch) {
-                    console.log("Contraseña correcta")
+                if (isMatch) { 
                     return done(null, user);    
                 } else {
-                    console.log("Contraseña equivocada")
                     return done(null, false, {message: ["Contraseña equivocada"]});
                 }
             });
