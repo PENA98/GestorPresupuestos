@@ -28,11 +28,11 @@ jQuery(function ($) {
             $(".page-wrapper").addClass("pinned");
             $("#sidebar").hover(
                 function () {
-                    console.log("mouseenter");
+                    
                     $(".page-wrapper").addClass("sidebar-hovered");
                 },
                 function () {
-                    console.log("mouseout");
+                    
                     $(".page-wrapper").removeClass("sidebar-hovered");
                 }
             )

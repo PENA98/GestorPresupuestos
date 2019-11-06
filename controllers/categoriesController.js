@@ -44,7 +44,6 @@ exports.saveCategory = async(req, res) => {
                 "name": req.body.Name,   
             }}
         },function(err, cb) {
-            console.log(err);
             
         }
         )

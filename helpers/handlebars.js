@@ -320,7 +320,6 @@ module.exports = {
         let html = "";
         let html2 = "";
         let count = 0
-        console.log(e);
         
         e.savings.forEach(sv =>{
             let percentage = 0;

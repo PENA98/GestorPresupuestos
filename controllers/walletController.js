@@ -17,7 +17,6 @@ exports.addExpense = async(req, res) => {
             "comment": req.body.comment
         }}
     },function(err, cb) {
-        console.log(err);
         
     }
     )
@@ -43,7 +42,6 @@ exports.start = async(req, res) => {
 
     
     await wall.save(function(err, cb){
-        console.log(err);
         
     });
 
@@ -52,7 +50,6 @@ exports.start = async(req, res) => {
     })
 
     await cat.save(function(err, cb){
-        console.log(err);
         
     })
 
@@ -75,7 +72,6 @@ exports.addIncome = async(req, res) => {
             "comment": req.body.comment
         }}
     },function(err, cb) {
-        console.log(err);
         
     }
     );
@@ -97,7 +93,7 @@ exports.cardCreator = async(req, res) => {
             "amount": 0
         }}
     },function(err, cb) {
-        console.log(err);
+
         
     }
     )
@@ -119,7 +115,6 @@ exports.saveCreator = async(req, res) => {
             "amount": 0
         }}
     },function(err, cb) {
-        console.log(err);
         
     }
     )
@@ -137,10 +132,9 @@ exports.saveAdder = async(req, res) => {
         'savings.name': req.body.saveName
     },
     function(err, cb){
-        console.log(err);
+
      
-    }).catch(function(err,cb){
-        console.log(err);    
+    }).catch(function(err,cb){    
     });;
     
     let realIndex = 0;
@@ -163,7 +157,7 @@ exports.saveAdder = async(req, res) => {
     {
         $set:{"savings.$.amount":sum}
     },function(err, cb) {
-        console.log(err);
+
         
     }
     )
@@ -179,7 +173,7 @@ exports.cardAdder = async(req, res) => {
         'creditCard.name': req.body.cardName
     },
     function(err, cb){
-        console.log(err);
+
            
     });
 
@@ -201,7 +195,7 @@ exports.cardAdder = async(req, res) => {
     {
         $set:{"creditCard.$.amount":sum}
     },function(err, cb) {
-        console.log(err);
+
         
     }
     )
@@ -309,7 +303,7 @@ exports.editData = async (req, res) => {
                 "income.$.comment": req.body.Descripcion2
             }
         },function(err, cb) {
-            console.log(err);
+
             
         }
         )
@@ -324,7 +318,7 @@ exports.editData = async (req, res) => {
                 "expense.$.comment": req.body.Descripcion2
             }
         },function(err, cb) {
-            console.log(err);
+
             
         }
         )
@@ -345,7 +339,7 @@ exports.deleteData = async(req, res) => {
             {
                 $pull: {"income":{_id: req.params.id}}
             },function(err, cb) {
-                console.log(err);
+
                 
             }
             )
@@ -357,7 +351,7 @@ exports.deleteData = async(req, res) => {
             {
                 $pull: {"expense": {_id: req.params.id}}
             },function(err, cb) {
-                console.log(err);
+
                 
             }
             )
