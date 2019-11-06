@@ -44,19 +44,19 @@ exports.saveUser = async(req, res, next) => {
         const user = new User(req.body)
 
         await user.save();
-
+        req.flash("Hecho", ["Te has registrado correctamente."])
         res.redirect("/login")
-
     }
 }
 
-exports.authenticateUser = function(req, res, next){
-    passport.authenticate('local', {
+exports.authenticateUser =  passport.authenticate('local', {
         successRedirect: "/home",
         failureRedirect: "/login",
-        failureFlash: true
-    })(req, res, next);
-}
+        failureFlash: true,
+        failureFlash: 'Nombre de usuario o contraseña invalidos.',
+        badRequestMessage: ["Debes ingresar ambos campos"]
+});
+
 
 exports.logOut = function(req, res){
     req.logout();
@@ -302,3 +302,14 @@ const configuracionMulter = {
     req.flash("Hecho", ["Contraseña modificada correctamente"]);
     res.redirect("/login");
   };
+
+  // Verificar si el usuario se encuentra autenticado
+exports.checkUser = (req, res, next) => {
+  // Retorna true si el usuario ya realizó la autenticación
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  // Si no se autenticó, redirecccionarlo al inicio de sesión
+  res.redirect("/login");
+};

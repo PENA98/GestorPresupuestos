@@ -314,13 +314,14 @@ module.exports = {
         return (options.fn().html = html);
 
     },
-    miniSaveMaker: (e, options) => {
+    miniSaveMaker1: (e, options) => {
 
 
         let html = "";
         let html2 = "";
         let count = 0
-
+        console.log(e);
+        
         e.savings.forEach(sv =>{
             let percentage = 0;
             count += 1

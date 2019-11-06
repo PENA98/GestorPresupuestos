@@ -12,14 +12,14 @@ module.exports = () => {
 
     // home routes
     router.get("/", homeController.showLanding);
-    router.get("/home", homeController.showHome)
+    router.get("/home", userController.checkUser, homeController.showHome)
     router.get("/app_home", homeController.showAppHome)
 
 
     // user routes
 
     //logout
-    router.get("/logout", userController.logOut);
+    router.get("/logout", userController.checkUser, userController.logOut);
 
     //login
     router.get("/login", userController.showLogin);
@@ -49,59 +49,59 @@ module.exports = () => {
     ], userController.saveUser);
 
     // rutas para añadir gastos
-    router.post("/add_expense/:url", walletController.addExpense)
+    router.post("/add_expense/:url", userController.checkUser, walletController.addExpense)
 
     // ruta para añadir ingresos
-    router.post("/add_income/:url", walletController.addIncome)
+    router.post("/add_income/:url", userController.checkUser, walletController.addIncome)
 
     //ruta para añadir una tarjeta
-    router.post("/add_card/:url", walletController.cardCreator)
+    router.post("/add_card/:url", userController.checkUser, walletController.cardCreator)
 
     //ruta para añadir un ahorro
-    router.post("/add_saving/:url", walletController.saveCreator)
+    router.post("/add_saving/:url", userController.checkUser, walletController.saveCreator)
 
     // ruta para añadir a un ahorro
-    router.post("/add_savings/:url", walletController.saveAdder)
+    router.post("/add_savings/:url", userController.checkUser, walletController.saveAdder)
 
     //ruta para añadir una cuenta 
 
-    router.post("/add_account/:url", accountController.addAccount)
+    router.post("/add_account/:url", userController.checkUser, accountController.addAccount)
 
     //ruta para añadir gasto a una tarjeta
-    router.post("/add_cardExpense/:url", walletController.cardAdder)
+    router.post("/add_cardExpense/:url", userController.checkUser, walletController.cardAdder)
 
     // ruta start
-    router.post("/start", walletController.start)
+    router.post("/start", userController.checkUser, walletController.start)
 
     //ruta para editar datos de la tabla
-    router.post("/edit/:cat/:id", walletController.editData)
+    router.post("/edit/:cat/:id", userController.checkUser, walletController.editData)
 
     //ruta para eliminar datos de la tabla
-    router.get("/delete/:cat/:id", walletController.deleteData)
+    router.get("/delete/:cat/:id", userController.checkUser, walletController.deleteData)
 
     // ruta para las categorias
-    router.get("/categories", categoriesController.showCategories)
+    router.get("/categories", userController.checkUser, categoriesController.showCategories)
 
     // rita para las tarjetas
-    router.get("/cards", walletController.showCards)
+    router.get("/cards", userController.checkUser, walletController.showCards)
 
     //ruta para editar gastos
     //router.get("/edit/:url", walletController.editExpense)
 
     //ruta para savings
-    router.get("/savings", walletController.showSavings)
+    router.get("/savings", userController.checkUser, walletController.showSavings)
 
     // ruta para guardar las categorias
-    router.post("/add_category/:url", categoriesController.saveCategory)
+    router.post("/add_category/:url", userController.checkUser, categoriesController.saveCategory)
 
     //ruta para account
-    router.get("/accounts",  accountController.showAccounts)
+    router.get("/accounts", userController.checkUser,  accountController.showAccounts)
 
     // perfil
-    router.get("/profile", userController.profile)
+    router.get("/profile", userController.checkUser, userController.profile)
 
     //ruta para las transacciones (ver tablas)
-    router.get("/transactions", dashboardController.showTable);
+    router.get("/transactions", userController.checkUser, dashboardController.showTable);
 
     // ruta para mostrar la vista de reseteo de password
     router.get("/reset_pass", userController.showRes)
@@ -114,7 +114,7 @@ module.exports = () => {
     router.post("/resetPassword/:token", userController.changePassword)
 
     //ruta para editar el perfil
-    router.post("/editProfile", userController.uploadImage, userController.editProfile)
+    router.post("/editProfile", userController.checkUser, userController.uploadImage, userController.editProfile)
 
     router.get("*", homeController.Error);
     return router;

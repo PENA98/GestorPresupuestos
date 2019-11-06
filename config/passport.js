@@ -24,7 +24,7 @@ module.exports = function(passport){
                     return done(null, user);    
                 } else {
                     console.log("Contraseña equivocada")
-                    return done(null, false, {message: "Contraseña equivocada"});
+                    return done(null, false, {message: ["Contraseña equivocada"]});
                 }
             });
         });
