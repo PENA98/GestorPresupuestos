@@ -93,7 +93,6 @@ typings/
 
 # Omitir los archivos de subida públicos
 
-public/uploads/profiles/*
 
 # Omitir las variables de entorno
 variables.env
