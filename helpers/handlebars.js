@@ -439,7 +439,7 @@ module.exports = {
                 <strong class="text-red">${sv.payDate}</strong>
                 </div>
                 <div class="col-lg-4">
-                <h3>Limite</h3>
+                <h3>Límite</h3>
                 <strong class="text-green">L ${sv.limit}.00</strong>
                 </div>
                 </div>
@@ -489,12 +489,12 @@ module.exports = {
 
             html +=`<div class="row justify-content-between">
                     <div class="col-lg-4">
-                    <h4>porcentaje gastado</h4>
+                    <h4>Porcentaje gastado</h4>
                     <h2><strong>L ${totalAmount}.00 - ${percentage}%</strong></h2>
                     </div>
                     <div class="col-lg-4"></div>
                     <div class="col-lg-4">
-                    <h4>Limite</h4>
+                    <h4>Límite</h4>
                     <h2><strong>L ${sv.amount}.00</strong></h2>
                     </div>
                     </div>
