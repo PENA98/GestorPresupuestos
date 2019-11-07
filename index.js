@@ -78,6 +78,24 @@ app.get('*', function(req, res, next){
 
 app.use("/", router());
 
+
+// 404
+app.use((req, res, next) => {
+    next(createError(404, "La página que has solicitado no existe"));
+});
+  
+  // Administración de los errores
+app.use((error, req, res, next) => {
+    const status = error.status || 500;
+    res.locals.status = status;
+    res.status(status);
+  
+    res.render("404", {
+      status,
+      message: error.message
+    });
+  });
+
 // Permitir que Heroku nos asigne un puerto
 const host = "0.0.0.0";
 const port = process.env.PORT;
