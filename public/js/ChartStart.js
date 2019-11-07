@@ -184,7 +184,7 @@ function incomeChart(e){
         data: {
             labels: labelz3,
             datasets: [{
-                label: "gastos por categorias",
+                label: "Gastos por categorías",
                 data: numbers3,
                 backgroundColor : [
                     'rgba(255, 99, 132)',
