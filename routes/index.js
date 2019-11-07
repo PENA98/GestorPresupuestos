@@ -116,6 +116,6 @@ module.exports = () => {
     //ruta para editar el perfil
     router.post("/editProfile", userController.checkUser, userController.uploadImage, userController.editProfile)
 
-    router.get("*", homeController.Error);
+    // router.get("*", homeController.Error);
     return router;
 };
