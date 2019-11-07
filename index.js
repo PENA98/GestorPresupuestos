@@ -12,6 +12,7 @@ const bodyParser = require("body-parser");
 const flash = require("connect-flash");
 const passport = require("passport");
 const toastr = require("toastr");
+const createError = require("http-errors");
 
 
 // archivo para las variables de entorno
@@ -81,7 +82,7 @@ app.use("/", router());
 
 // 404
 app.use((req, res, next) => {
-    next(createError(404, "La página que has solicitado no existe"));
+    next(createError(404, "La página que buscas no existe"));
 });
   
   // Administración de los errores
@@ -91,6 +92,7 @@ app.use((error, req, res, next) => {
     res.status(status);
   
     res.render("404", {
+        layout: "home.handlebars",
       status,
       message: error.message
     });
