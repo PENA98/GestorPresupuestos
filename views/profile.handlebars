@@ -34,15 +34,38 @@
 
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                    <b>Ingresos</b> <a class="pull-right">1,322</a>
+                    <b>Ingresos</b> 
+                    {{#if incomes.length}}
+                    {{#incomeTotalP incomes}}
+                    {{/incomeTotalP}}
+                    {{else}}
+                    <a class="pull-right">L 0</a>
+
+                    {{/if}}
+                    
                   </li>
                   <br>
                   <li class="list-group-item">
-                    <b>Gastos</b> <a class="pull-right">543</a>
+                    <b>Gastos</b> 
+                    {{#if expenses.length}}
+                    {{#expenseTotalProfile expenses}}
+                    {{/expenseTotalProfile}}
+                    {{else}}
+                    <a class="pull-right">L 0</a>
+
+                    {{/if}}
                   </li>
                   <br>
                   <li class="list-group-item">
-                    <b>Tarjetas</b> <a class="pull-right">13,287</a>
+                    <b>Tarjetas</b> 
+                    {{#if data}}
+                    {{#cardTotalProfile data}}
+                    {{/cardTotalProfile}}
+                    {{else}}
+                    <a class="pull-right">L 0</a>
+
+                    {{/if}}
+                    
                   </li>
                   <br>
                 </ul>

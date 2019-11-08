@@ -118,6 +118,30 @@ module.exports = {
         let html = `<h3> L ${totalAmount} </h3>`;
         return (options.fn().html = html);
     },
+    cardTotalProfile: (e, options) => {
+        let totalAmount = 0;
+        e.creditCard.forEach(am => {
+            totalAmount += am.amount
+        });
+        let html = `<a class="pull-right"> L ${totalAmount}</a>`;
+        return (options.fn().html = html);
+    },
+    incomeTotalP: (e, options) => {
+       let totalAmount = 0;
+       e.forEach(income => {
+           totalAmount += income.amount
+       });
+       let html = `<a class="pull-right"> L ${totalAmount}</a>`;
+       return (options.fn().html = html);
+    },
+    expenseTotalProfile: (e, options) => {
+        let totalAmount = 0;
+        e.forEach(expense => {
+            totalAmount += expense.amount
+        });
+        let html = `<a class="pull-right"> L ${totalAmount}</a>`;
+        return (options.fn().html = html);
+    },
     balance: (i, e,  options) => {
         let totalIncome = 0;
         let totalExpense = 0;
