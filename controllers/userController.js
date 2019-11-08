@@ -130,7 +130,7 @@ exports.editProfile = async (req, res) => {
         user1.image = req.file.filename;
     }
   
-    console.log(user1);
+ 
     
     // Guardar los cambios
     await user1.save(function(err, cb){
@@ -145,8 +145,8 @@ exports.editProfile = async (req, res) => {
   };
 
 // Subir una imagen al servidor
-exports.uploadImage = (req, res, next) => {
-    upload(req, res, function(error) {
+exports.uploadImage = async (req, res, next) => {
+  upload(req, res, function(error) {
       if (error) {
         // Errores de multer
         if (error instanceof multer.MulterError) {

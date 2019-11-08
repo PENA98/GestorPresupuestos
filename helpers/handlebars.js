@@ -18,7 +18,8 @@ module.exports = {
         "Salud",
         "Taxi",
         "Transporte",
-        "Estudios"
+        "Estudios",
+        "Otros"
     ];
 
         let html = "";
