@@ -3,7 +3,7 @@
   {{#if Card}}
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-aqua">
+    <div class="small-box bg-aqua" onclick="window.location='/transactions';">
       <div class="inner">
         {{#if incomes.length}}
         {{#balance incomes expenses}}
@@ -26,7 +26,7 @@
   <!-- ./col -->
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-green">
+    <div class="small-box bg-green" onclick="window.location='/transactions';">
       <div class="inner">
         {{#if incomes.length}}
         {{#incomeTotal incomes}}
@@ -46,7 +46,7 @@
   <!-- ./col -->
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-yellow">
+    <div class="small-box bg-yellow" onclick="window.location='/transactions';">
       <div class="inner">
         {{#if expenses.length}}
         {{#expenseTotal expenses}}
@@ -68,12 +68,12 @@
 
   <div class="col-lg-3 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-red">
+    <div class="small-box bg-red" onclick="window.location='/cards';">
       <div class="inner">
         {{#cardTotal data}}
         {{/cardTotal}}
 
-        <p>Tarjetas de credito</p>
+        <p>Tarjetas de crédito</p>
       </div>
       <div class="icon">
         <i class="ion ion-card"></i>
@@ -85,7 +85,7 @@
 
   <div class="col-lg-4 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-aqua">
+    <div class="small-box bg-aqua" onclick="window.location='/transactions';">
       <div class="inner">
         {{#if incomes.length}}
         {{#balance incomes expenses}}
@@ -101,13 +101,13 @@
       <div class="icon">
         <i class="ion ion-cash"></i>
       </div>
-      <a href="#" class="small-box-footer">Mas información <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="/transactions" class="small-box-footer">Mas información <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
   <div class="col-lg-4 col-xs-6">
     <!-- small box -->
-    <div class="small-box bg-green">
+    <div class="small-box bg-green" onclick="window.location='/transactions';">
       <div class="inner">
         {{#if incomes.length}}
         {{#incomeTotal incomes}}
@@ -121,13 +121,13 @@
       <div class="icon">
         <i class="ion ion-arrow-graph-up-right"></i>
       </div>
-      <a href="#" class="small-box-footer">Mas información <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="/transactions" class="small-box-footer">Mas información <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->
   <div class="col-lg-4 col-xs-12">
     <!-- small box -->
-    <div class="small-box bg-yellow">
+    <div class="small-box bg-yellow" onclick="window.location='/transactions';">
       <div class="inner">
         {{#if expenses.length}}
         {{#expenseTotal expenses}}
@@ -142,7 +142,7 @@
       <div class="icon">
         <i class="ion ion-arrow-graph-down-right"></i>
       </div>
-      <a href="#" class="small-box-footer">Mas información <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="/transactions" class="small-box-footer">Mas información <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
   <!-- ./col -->

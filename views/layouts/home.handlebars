@@ -91,13 +91,13 @@
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="/uploads/profiles/{{user.image}}" class="user-image" alt="User Image">
+                <img src="/uploads/profiles/{{user.image}}" class="user-image" alt="User Image" >
                 <span class="hidden-xs">{{user.name}}</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                  <img src="/uploads/profiles/{{user.image}}" class="img-circle" alt="User Image">
+                  <img src="/uploads/profiles/{{user.image}}" class="img-circle" alt="User Image"> 
 
                   <p>
                     {{user.name}}
@@ -271,7 +271,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="icomeAm">Introduzca el valor</label>
-                  <input type="number" autocomplete="off" class="form-control text-left" id="icomeAm" name="amount">
+                  <input type="number" min="0" autocomplete="off" class="form-control text-left" id="icomeAm" name="amount">
                 </div>
                 <!-- /input-group -->
               </div>
@@ -400,7 +400,7 @@
 
             <div class="form-group">
               <label>Límite</label>
-              <input type="Number" autocomplete="off" name="limit" class="form-control"
+              <input type="Number" min="0" autocomplete="off" name="limit" class="form-control"
                 placeholder="Ingrese el límite de su tarjeta">
             </div>
 
@@ -459,7 +459,7 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <label>Meta de ahorro</label>
-                  <input type="Number" autocomplete="off" name="goal" class="form-control"
+                  <input type="Number" min="0" autocomplete="off" name="goal" class="form-control"
                     placeholder="Ingrese su meta de ahorro">
                 </div>
               </div>
@@ -519,7 +519,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="amountexp">Introduzca el valor</label>
-                  <input type="number" autocomplete="off" class="form-control text-left" id="amountexp" name="amount">
+                  <input type="number" min="0" autocomplete="off" class="form-control text-left" id="amountexp" name="amount">
                 </div>
                 <!-- /input-group -->
               </div>
@@ -619,7 +619,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="cardExp">Cantidad gastada en tarjeta</label>
-                  <input type="number" autocomplete="off" class="form-control text-left" id="cardExp" name="amount">
+                  <input type="number" min="0" autocomplete="off" class="form-control text-left" id="cardExp" name="amount">
                 </div>
                 <!-- /input-group -->
               </div>
@@ -720,7 +720,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="saveamss">Cantidad a agregar al ahorro</label>
-                  <input type="number" autocomplete="off" class="form-control text-left" id="saveamss" name="amount">
+                  <input type="number" min="0" autocomplete="off" class="form-control text-left" id="saveamss" name="amount">
                 </div>
                 <!-- /input-group -->
               </div>
