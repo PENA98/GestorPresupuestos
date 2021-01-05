@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/PENA98/GestorPresupuestos#readme",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.6",
     "chart.js": "^2.8.0",
     "concurrently": "^4.1.2",
